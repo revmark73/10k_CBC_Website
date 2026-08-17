@@ -1,0 +1,190 @@
+[
+  {
+    "_id": "page.home",
+    "_type": "page",
+    "title": "Catalyst Bible College",
+    "slug": { "_type": "slug", "current": "/" },
+    "seo": {
+      "metaTitle": "Catalyst Bible College | Accredited Ministry Degrees in Visalia, CA",
+      "metaDescription": "Earn an accredited bachelor's degree through Nelson University at Catalyst Bible College in Visalia, California. Total tuition under $37,000, with over $100,000 in scholarships awarded each year.",
+      "_migrationNotes": "The live site has no meta description and no Open Graph tags on any page. Every field here is new and needs your sign-off."
+    },
+    "tagline": "Where everyone majors in changing the world.",
+    "blocks": [
+      { "_type": "cardTrio", "cards": [
+        { "eyebrow": "Our Story", "body": "Get to know the mission, background, and staff behind Catalyst Bible College.", "ctaLabel": "Learn More", "ctaHref": "/about" },
+        { "eyebrow": "Our Academics", "body": "Explore our bachelor's degree program powered by Nelson University.", "ctaLabel": "Explore Academics", "ctaHref": "/programs" },
+        { "eyebrow": "Our Difference", "body": "See what sets Catalyst Bible College apart from other colleges and universities.", "ctaLabel": "Compare CBC", "ctaHref": "/why" }
+      ]},
+      { "_type": "callout", "heading": "Make an Impact", "body": "We are looking for partners to join us in our collaborative effort to train and educate ministers.", "ctaLabel": "Become a Network Site", "ctaHref": "/pilot",
+        "_migrationNotes": "Live button points to http://www.catalystbible.com/pilot: wrong protocol, a www subdomain the site does not otherwise use, and an unnecessary redirect hop. Also fixed the label casing from 'Become A Network site'." },
+      { "_type": "feature", "heading": "A college program centered on the student experience.", "body": "With generous scholarships, mission trip opportunities, community life, and more, see how Catalyst Bible College is committed to the student experience as we empower young men and women to change the world.", "ctaLabel": "Learn More", "ctaHref": "/studentlife",
+        "image": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2024/05/DSC04529-2-1024x683.jpg", "_status": "KEEP", "alt": "NEEDS_ALT_TEXT" } }
+    ],
+    "_migrationNotes": "Homepage says 'our bachelor's degree program', singular, while you offer seven undergraduate degrees. Recommend pluralizing or pulling a live count from the program collection."
+  },
+
+  {
+    "_id": "page.about",
+    "_type": "page",
+    "title": "About",
+    "slug": { "_type": "slug", "current": "about" },
+    "seo": {
+      "metaTitle": "About Catalyst Bible College | Visalia, California",
+      "metaDescription": "Catalyst Bible College is powered by Nelson University and hosted by Visalia First in California's Central Valley. Meet our leadership, board, and faculty."
+    },
+    "tagline": "Where everyone majors in changing the world.",
+    "subhead": "Catalyst Bible College is powered by Nelson University.",
+    "blocks": [
+      { "_type": "richText", "heading": "About Our Campus", "body": "With meager beginnings in 1928, brave men and women of God overcame relentless spiritual attacks and built Visalia First on prayer and the presence of God.\n\nOur world is changing at lightning speed, but there is one thing that has not changed: the power of the Gospel and a Spirit-filled church. In every adult service for the past 27 years, someone has accepted Jesus as their Savior and committed their life to Him. With multiple ministries and services happening throughout the week, lives are consistently being changed for the Kingdom!\n\nStudents of Catalyst Bible College have the incredible opportunity to work alongside strong ministry leaders at Visalia First as they develop leadership skills, a strong network of peers, and a deep knowledge of the Bible.",
+        "image": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2023/04/ca-img-01-1024x683.jpg", "_status": "KEEP", "alt": "NEEDS_ALT_TEXT" },
+        "_migrationNotes": "'the past 27 years' is a hardcoded number that silently ages. Consider storing a start year and computing, or rewriting to a fixed phrase." },
+      { "_type": "richText", "heading": "Location", "body": "Located strategically in the Central Valley of California, Visalia First is under an hour away from Sequoia National Park, three hours away from Los Angeles, and two hours from the nearest beach.\n\nOur campus is in the perfect location to have hands-on ministry experience across our partner churches.",
+        "_migrationNotes": "Source read 'the Sequoia National Park' and 'two hours to the nearest beach'. Lightly corrected." },
+      { "_type": "richText", "heading": "Student Scholarships", "body": "Visalia First and Catalyst Bible College are committed to producing credentialed, high-functioning ministers for the Assemblies of God with little to no debt. This is why we are offering more than $100,000 worth of scholarships for students to apply for each year. The average CBC student will graduate receiving close to $10,000 in scholarship dollars.\n\nContact us for more information on how to apply for scholarships and become a CBC scholar.",
+        "_migrationNotes": "Source read 'committed to produce'; corrected to 'committed to producing'. Dollar figures now also live as costItem records; decide whether this prose should reference them or restate them." },
+      { "_type": "peopleGrid", "heading": "Meet Our Leadership Team", "category": "leadership" },
+      { "_type": "peopleGrid", "heading": "Meet Our Board of Directors", "category": "board" },
+      { "_type": "peopleGrid", "heading": "Meet Our Faculty and Guest Lecturers", "category": "faculty" }
+    ],
+    "_migrationNotes": "Three hand-built grids become three queries. The 'Coming Soon / Coming Soon' placeholder staff card was dropped rather than migrated; an empty slot should be absence, not a card."
+  },
+
+  {
+    "_id": "page.why",
+    "_type": "page",
+    "title": "Why CBC?",
+    "slug": { "_type": "slug", "current": "why" },
+    "seo": {
+      "metaTitle": "Why Catalyst Bible College | Affordable Accredited Ministry Training",
+      "metaDescription": "Total tuition of $36,600 compared to $100,000 or more at peer Christian universities, plus practicums and five international mission trips at no additional cost."
+    },
+    "blocks": [
+      { "_type": "costComparisonRef", "_ref": "costComparison.peer-tuition" },
+      { "_type": "costTable", "heading": "Undergraduate Cost Breakdown", "items": ["cost.tuition-annual", "cost.site-fee", "cost.graduation-fee"],
+        "_migrationNotes": "On the live site these three lines are marked up as links pointing at '#'. They are not links and should not be." },
+      { "_type": "richText", "heading": "Practicums", "body": "We want all of our students to be well-versed in all aspects of ministry, and practicums are one way we are able to do this. Each student will rotate through Catalyst Bible College's practicum focuses. These areas have been carefully curated to emphasize key elements of ministry and leadership development.\n\nPracticums are required for Church Leadership majors, but can also be utilized as a resource for our other offered degree programs. Each student not in the Church Leadership program is highly encouraged to participate in practicums.",
+        "_migrationNotes": "INCOMPLETE ON LIVE SITE. The section promises 'three different Practicum focuses' and then renders nothing at all. The three focuses are missing entirely from the public site. I removed the count from the copy so it is not promising content that does not exist. Supply the three focuses and they should become their own repeatable records." },
+      { "_type": "richText", "heading": "Catalyst World Experience", "body": "One of the goals of CBC is for every student to graduate with a passion and heart for missions. That is why we have developed the Catalyst World Experience. Every eligible student will have the opportunity to visit five foreign countries during their four years with Catalyst. These experiences come at no additional cost to the student through generous partners and donations. We aim to visit South America, Europe, Africa, Asia, and the Holy Land before a student graduates our program.\n\nTo learn more about the Catalyst World Experience, set up a meeting with our Admissions Office.", "ctaLabel": "Read Trip Reports", "ctaHref": "/cwe" }
+    ]
+  },
+
+  {
+    "_id": "page.cwe",
+    "_type": "page",
+    "title": "Catalyst World Experience",
+    "slug": { "_type": "slug", "current": "cwe" },
+    "seo": {
+      "metaTitle": "Catalyst World Experience | Mission Trips at Catalyst Bible College",
+      "metaDescription": "Every eligible CBC student visits five countries in four years at no additional cost. Read where our students have served, from Medellin to South Africa."
+    },
+    "blocks": [
+      { "_type": "richText", "body": "One of the goals of CBC is for every student to graduate with a passion and heart for missions. That is why we have developed the Catalyst World Experience. Every eligible student will have the opportunity to visit five foreign countries during their four years with Catalyst. These experiences come at no additional cost to the student through generous partners and donations. We aim to visit South America, Europe, Africa, Asia, and the Holy Land before a student graduates our program." },
+      { "_type": "tripReport", "cohort": "Year One", "destination": "Medellin, Colombia", "durationDays": 7, "partners": "Missionaries Corey and Tona Kautz", "body": "Our Year One students had the opportunity to visit Medellin, Colombia and work hand-in-hand with missionaries Corey and Tona Kautz. Students were able to minister to children, teens, adults, and the homeless community in Medellin for seven days." },
+      { "_type": "tripReport", "cohort": "Year Two", "destination": "South Africa", "durationDays": 10, "partners": "Missionaries Rudi and Sharon Swanepoel", "body": "Our Year Two students went to South Africa to work with missionaries Rudi and Sharon Swanepoel. In their ten day trip, students saw over 10,000 salvations through kids ministry crusades and concluded the trip with an immersive safari experience." }
+    ],
+    "_migrationNotes": "Orphan page, not linked from any navigation, and the entire body is duplicated twice on the live page. Deduplicated here. This is genuinely good recruiting content that nobody can currently find. Trip reports are modeled as repeatable records so future trips are an add, not a rebuild."
+  },
+
+  {
+    "_id": "page.studentlife",
+    "_type": "page",
+    "title": "Student Life",
+    "slug": { "_type": "slug", "current": "studentlife" },
+    "seo": {
+      "metaTitle": "Student Life at Catalyst Bible College | Chapel, Housing, Community",
+      "metaDescription": "Weekly chapel, leadership labs, monthly community activities, and student housing at $450 a month including utilities."
+    },
+    "blocks": [
+      { "_type": "costTable", "heading": "Student Fee Structure", "items": ["cost.site-fee"] },
+      { "_type": "featureList", "items": [
+        { "heading": "Student Chapel", "body": "All on-campus students will be asked to attend one chapel service a week and sign up for a small group in their respective ministry area, such as Young Adults or Adults. Chapel services are traditionally held on Wednesdays and last 60 minutes. Services are devotional in nature and feature guest speakers." },
+        { "heading": "Networking Opportunities", "body": "Students will be able to interact, network, and learn from prominent leaders across the country multiple times each semester. Students will also have the chance to engage with local community leaders during their time as students.", "_migrationNotes": "Source read 'prominent prominent leaders'. Corrected." },
+        { "heading": "Community Life", "body": "Monthly, students will be able to participate in a community-building activity such as bowling, laser tag, a movie, or a family dinner." },
+        { "heading": "Leadership Labs and Crossfire", "body": "Each week, students gain practical insights on future career preparation through Leadership Labs. In addition to Labs, students participate in Crossfire discussions that challenge their worldview and encourage them to dive deep into the Bible.", "_migrationNotes": "Source read 'Crossfire discussion that challenge their worldview and encourages them to deep dive'. Corrected for agreement." }
+      ]},
+      { "_type": "richText", "heading": "Student Housing", "body": "Catalyst Bible College student housing is available to enrolled CBC students. To qualify for student housing, you must be an active, enrolled student with CBC and apply through the Catalyst offices prior to the start of the semester. Students who live more than an hour outside of campus receive priority placement.\n\nCBC has the ability to house full-time students just minutes away from our Visalia campus. Students pay $450 per month including rent, utilities, and house furniture. Students will have one or two roommates when they live in CBC student housing. Students are not required to live in student housing while enrolled.\n\nContact the Catalyst Student Success Office for housing policies and payment information.", "ctaLabel": "Nelson University student housing disclaimer", "ctaHref": "/ca_disc",
+        "_migrationNotes": "Source bullet list contained hardcoded whitespace padding from the builder. Also fixed 'students who live an hour outside of campus' to 'more than an hour', which is what the policy appears to mean. Confirm." }
+    ],
+    "_migrationNotes": "Live page opens with 'Starting in the Fall of 2025', a year stale. Fee timing now lives on the costItem record's effectiveTerm."
+  },
+
+  {
+    "_id": "page.apply",
+    "_type": "page",
+    "title": "Apply",
+    "slug": { "_type": "slug", "current": "apply" },
+    "seo": {
+      "metaTitle": "Apply to Catalyst Bible College | Application Instructions",
+      "metaDescription": "Step-by-step instructions for applying to Catalyst Bible College through the Nelson University application portal."
+    },
+    "blocks": [
+      { "_type": "primaryCta", "label": "Start Your Application", "href": "https://connect.nelson.edu/apply/" },
+      { "_type": "steps", "heading": "Applying to Catalyst Bible College", "intro": "When applying to Catalyst Bible College, you will create an application with Nelson University first.", "items": [
+        { "body": "Choose **Create an Account** under First Time Users." },
+        { "body": "Complete the form that asks for your email address, first name, last name, and birthdate." },
+        { "body": "You will receive a temporary PIN by email. From there, you will be asked to create a password for your Nelson application account." },
+        { "body": "Once your password is set, select **Start New Application**. Choose **Main Application** and **Undergraduate Partner Site Admissions Application**. If you are applying for a graduate program, select **Graduate Admissions Application**." },
+        { "body": "Under the **Applicant Information** tab, select your site from the dropdown menu.", "_dynamic": "site.applicationDropdownLabel",
+          "_migrationNotes": "Hardcoded as 'Visalia, CA // Catalyst Bible College' on the live site. Now pulled from the site record, so each network site page shows the correct value instead of sending every applicant to Visalia." },
+        { "body": "Everything that remains on the application is personal and academic history. If you need assistance completing the application, please contact our CBC offices." }
+      ]},
+      { "_type": "richText", "heading": "SOM Site Approval", "body": "Once your application is completed, every student will be presented to the Catalyst Bible College staff for approval. It will be noted in your application's outstanding items as \"SOM Site Approval.\" The CBC staff will determine if you are an eligible candidate for enrolling and notify Nelson of the decision for acceptance.",
+        "image": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2025/07/Screenshot-2025-07-02-at-1.08.25 PM-768x631.png", "_status": "REPLACE" },
+        "ctaHref": null,
+        "_migrationNotes": "CRITICAL BUG FIXED. On the live site, both this heading and its screenshot link to https://ppay.co/LIdjLJn9d-4, a PushPay giving page. A student following application instructions currently lands on a donation form. Link removed entirely; nothing here should be clickable. Source also read 'It will noted'; corrected. The screenshot is an image of application UI and should be replaced with described steps or a properly captioned figure with alt text." }
+    ]
+  },
+
+  {
+    "_id": "page.pilot",
+    "_type": "page",
+    "title": "Becoming a Catalyst Site",
+    "slug": { "_type": "slug", "current": "pilot" },
+    "seo": {
+      "metaTitle": "Become a Catalyst Bible College Network Site | Partner With Us",
+      "metaDescription": "Churches can host an accredited Catalyst Bible College site. Review the partnership criteria and start a conversation with our team."
+    },
+    "blocks": [
+      { "_type": "orderedList", "heading": "How to Become a Catalyst Site", "intro": "Churches interested in hosting a Catalyst Bible College site must meet the following criteria:", "items": [
+        "Schedule a call to meet with a member of the Catalyst Bible College team.",
+        "Determine a semester start with a four-month runway.",
+        "Have a minimum of five students wanting to enroll for the start of their semester.",
+        "Designate one staff person to serve as the liaison to the CBC main campus.",
+        "Agree to cover expenses related to staff training and classroom start up."
+      ]},
+      { "_type": "costTable", "heading": "Cost Breakdown", "items": [], "appliesTo": "networkSite",
+        "_migrationNotes": "BLOCKED. The entire partner cost breakdown is a single image on the live site (2025/02/Franchise-Fees-1-1024x576.png). I cannot read pricing out of a PNG, so these costItem records have to be typed by hand from the source file. Separately, the filename publishes the word 'Franchise' to anyone who inspects the page, which may not be the language you want attached to a ministry partnership." }
+    ],
+    "_migrationNotes": "Reachable only from one homepage button, absent from all navigation. Page also uses http:// in its logo and footer links while the rest of the site uses https."
+  },
+
+  {
+    "_id": "page.network",
+    "_type": "page",
+    "title": "Network Resources",
+    "slug": { "_type": "slug", "current": "network" },
+    "access": "gated",
+    "seo": { "noIndex": true },
+    "blocks": [
+      { "_type": "richText", "body": "Resources for approved Catalyst Network sites." },
+      { "_type": "resourceList", "audience": "networkSites" }
+    ],
+    "_migrationNotes": "SECURITY. Live page carries the notice 'Please do not share this page. This is exclusively for approved Catalyst Network sites', has no authentication of any kind, and is indexed by Google. It also holds a countdown timer to the Fall 2025 semester, a date long past, and all five resource buttons are dead, pointing at '<>' or '#'. In the new build this route sits behind Cloudflare Access and carries noindex. The countdown widget was not migrated; if you want one it should read from a term start date, not a hardcoded timestamp."
+  },
+
+  {
+    "_id": "page.contact",
+    "_type": "page",
+    "title": "Contact",
+    "slug": { "_type": "slug", "current": "contact" },
+    "seo": {
+      "metaTitle": "Contact Catalyst Bible College | Visalia, CA",
+      "metaDescription": "Questions about Catalyst Bible College? Reach our admissions team in Visalia, California at 559-733-9070."
+    },
+    "blocks": [
+      { "_type": "richText", "heading": "We'd love to hear from you", "body": "Interested in Catalyst Bible College, or have questions and want to learn more?" },
+      { "_type": "formEmbed", "form": "inquiry" }
+    ]
+  }
+]

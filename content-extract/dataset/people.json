@@ -1,0 +1,248 @@
+[
+  {
+    "_id": "person.mark-merrill",
+    "_type": "person",
+    "name": "Dr. Mark Merrill",
+    "slug": { "_type": "slug", "current": "mark-merrill" },
+    "role": "President/Founder",
+    "categories": ["leadership", "faculty"],
+    "credential": "Doctor of Ministry, George Fox University",
+    "sites": [
+      { "_type": "reference", "_ref": "site.visalia" },
+      { "_type": "reference", "_ref": "site.the-chapel" }
+    ],
+    "active": true,
+    "sortOrder": 10,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.06-AM.png", "_status": "REPLACE" },
+    "_migrationNotes": "Two different photos exist on the live site: a 2026 screenshot on /about/ and a real camera file (2023/08/DSC02433-scaled.jpg) on /thechapel/. Single record now. The DSC file is the better source but both should be replaced in the photo session."
+  },
+  {
+    "_id": "person.mike-clarensau",
+    "_type": "person",
+    "name": "Dr. Mike Clarensau",
+    "slug": { "_type": "slug", "current": "mike-clarensau" },
+    "role": "Vice President of Academics",
+    "categories": ["leadership", "faculty"],
+    "credential": null,
+    "sites": [
+      { "_type": "reference", "_ref": "site.visalia" },
+      { "_type": "reference", "_ref": "site.the-chapel" }
+    ],
+    "active": true,
+    "sortOrder": 20,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2025/02/Screenshot-2025-02-10-at-12.28.49 PM.png", "_status": "REPLACE" },
+    "_migrationNotes": "Faculty listing on /about/ shows an em-dash placeholder where a credential belongs. Left null so the template omits the line instead of printing a dash. Source filename contains a space, which is part of why assets need re-upload."
+  },
+  {
+    "_id": "person.regan-munsey",
+    "_type": "person",
+    "name": "Regan Munsey",
+    "slug": { "_type": "slug", "current": "regan-munsey" },
+    "role": "Vice President of Operations",
+    "categories": ["leadership", "faculty"],
+    "credential": "Master of Organizational Leadership, Nelson University",
+    "email": "reganm@catalystbible.com",
+    "sites": [
+      { "_type": "reference", "_ref": "site.visalia" },
+      { "_type": "reference", "_ref": "site.the-chapel" }
+    ],
+    "active": true,
+    "sortOrder": 30,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.41-AM.png", "_status": "REPLACE" },
+    "_migrationNotes": "Live site shows two different headshots for this person, a 2024 screenshot on /thechapel/ and a 2026 screenshot on /about/. Resolved to one record."
+  },
+  {
+    "_id": "person.desi-brantley",
+    "_type": "person",
+    "name": "Desi Brantley",
+    "slug": { "_type": "slug", "current": "desi-brantley" },
+    "role": "Student Success Coordinator",
+    "categories": ["leadership"],
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 40,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.34-AM.png", "_status": "REPLACE" },
+    "_migrationNotes": "CONFLICT TO RESOLVE. /about/ lists this person as Student Success Coordinator while /thechapel/ lists Krysta Edwards as Director of Student Success. Confirm which is current before import."
+  },
+  {
+    "_id": "person.krysta-edwards",
+    "_type": "person",
+    "name": "Krysta Edwards",
+    "slug": { "_type": "slug", "current": "krysta-edwards" },
+    "role": "Director of Student Success",
+    "categories": ["leadership"],
+    "sites": [{ "_type": "reference", "_ref": "site.the-chapel" }],
+    "active": "NEEDS_VERIFICATION",
+    "sortOrder": 45,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2024/10/Screenshot-2024-10-21-at-3.18.32 PM.png", "_status": "REPLACE" },
+    "_migrationNotes": "Appears only on /thechapel/, which looks like a stale hand-copied page. May be a former staff member. Do not publish until confirmed. If departed, set active:false rather than deleting, so the record retains history."
+  },
+  {
+    "_id": "person.isidro-carrasco",
+    "_type": "person",
+    "name": "Isidro Carrasco",
+    "slug": { "_type": "slug", "current": "isidro-carrasco" },
+    "role": "Community Relationship Liaison",
+    "categories": ["leadership", "faculty"],
+    "credential": "Master of Divinity, Southwestern Baptist Theological Seminary",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 50,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.16-AM.png", "_status": "REPLACE" }
+  },
+  {
+    "_id": "person.genna-martin",
+    "_type": "person",
+    "name": "Genna Martin",
+    "slug": { "_type": "slug", "current": "genna-martin" },
+    "role": "Site Director",
+    "categories": ["siteStaff"],
+    "email": "gennam@catalystbible.com",
+    "sites": [{ "_type": "reference", "_ref": "site.the-chapel" }],
+    "active": true,
+    "sortOrder": 60,
+    "photo": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2025/06/Screenshot-2025-06-26-at-8.10.15 AM-871x1024.png", "_status": "REPLACE" },
+    "_migrationNotes": "Live site renders the role as 'CBC The Chapel Site Director |' with a trailing pipe. Role is now 'Site Director' and the site name comes from the site reference, so the template composes it correctly."
+  },
+
+  {
+    "_id": "person.sam-chand",
+    "_type": "person",
+    "name": "Sam Chand",
+    "slug": { "_type": "slug", "current": "sam-chand" },
+    "role": "Chairman of the Board of Directors",
+    "categories": ["board", "faculty"],
+    "affiliation": "Sam Chand Leadership Institute",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 110
+  },
+  {
+    "_id": "person.rusty-railey",
+    "_type": "person",
+    "name": "Dr. Rusty Railey",
+    "slug": { "_type": "slug", "current": "rusty-railey" },
+    "role": "Board Member",
+    "categories": ["board"],
+    "affiliation": "Victory City Church, Joliet, IL",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 120
+  },
+  {
+    "_id": "person.brad-rosenberg",
+    "_type": "person",
+    "name": "Brad Rosenberg",
+    "slug": { "_type": "slug", "current": "brad-rosenberg" },
+    "role": "Board Member",
+    "categories": ["board"],
+    "affiliation": "Convoy of Hope",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 130
+  },
+  {
+    "_id": "person.george-westlake",
+    "_type": "person",
+    "name": "George Westlake",
+    "slug": { "_type": "slug", "current": "george-westlake" },
+    "role": "Board Member",
+    "categories": ["board"],
+    "affiliation": "Sheffield Family Life Center, Kansas City, MO",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 140
+  },
+  {
+    "_id": "person.warren-oldfield",
+    "_type": "person",
+    "name": "Warren Oldfield",
+    "slug": { "_type": "slug", "current": "warren-oldfield" },
+    "role": "Board Member",
+    "categories": ["board"],
+    "affiliation": "American Incorporated",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 150
+  },
+
+  {
+    "_id": "person.carl-fabrizio",
+    "_type": "person",
+    "name": "Dr. Carl Fabrizio",
+    "slug": { "_type": "slug", "current": "carl-fabrizio" },
+    "categories": ["faculty"],
+    "credential": "Doctor of Ministry, Andersonville Theological Seminary",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 210
+  },
+  {
+    "_id": "person.john-walker",
+    "_type": "person",
+    "name": "John Walker",
+    "slug": { "_type": "slug", "current": "john-walker" },
+    "categories": ["faculty"],
+    "credential": "Master of Theology, Nelson University",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 220
+  },
+  {
+    "_id": "person.shawn-fox",
+    "_type": "person",
+    "name": "Dr. Shawn Fox",
+    "slug": { "_type": "slug", "current": "shawn-fox" },
+    "categories": ["faculty"],
+    "credential": "Master of Divinity, Nelson University",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 230,
+    "_migrationNotes": "Listed with an honorific of Dr. but a master's credential. Verify whether a doctorate should be listed instead."
+  },
+  {
+    "_id": "person.blake-edwards",
+    "_type": "person",
+    "name": "Blake Edwards",
+    "slug": { "_type": "slug", "current": "blake-edwards" },
+    "categories": ["faculty"],
+    "credential": "Master of Theology, Nelson University",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 240
+  },
+  {
+    "_id": "person.kent-mankins",
+    "_type": "person",
+    "name": "Dr. Kent Mankins",
+    "slug": { "_type": "slug", "current": "kent-mankins" },
+    "categories": ["faculty"],
+    "credential": "Doctor of Philosophy, University of Buckingham",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 250
+  },
+  {
+    "_id": "person.abel-aguilar",
+    "_type": "person",
+    "name": "Abel Aguilar",
+    "slug": { "_type": "slug", "current": "abel-aguilar" },
+    "categories": ["faculty"],
+    "credential": null,
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 260,
+    "_migrationNotes": "Credential shows as a dash placeholder on the live site. Null so the template omits it."
+  },
+  {
+    "_id": "person.miles-vega",
+    "_type": "person",
+    "name": "Miles Vega",
+    "slug": { "_type": "slug", "current": "miles-vega" },
+    "categories": ["faculty"],
+    "credential": "Master of Marriage, Family and Child Counseling, California State University",
+    "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+    "active": true,
+    "sortOrder": 270
+  }
+]

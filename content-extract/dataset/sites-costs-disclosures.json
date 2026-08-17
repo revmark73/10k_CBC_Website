@@ -1,0 +1,221 @@
+{
+  "sites": [
+    {
+      "_id": "site.visalia",
+      "_type": "site",
+      "name": "Catalyst Bible College",
+      "shortName": "CBC California",
+      "slug": { "_type": "slug", "current": "visalia" },
+      "isMainSite": true,
+      "status": "active",
+      "city": "Visalia",
+      "state": "CA",
+      "hostChurch": "Visalia First",
+      "address": "3737 S Akers Street, Visalia, CA 93277",
+      "phone": "559-733-9070",
+      "email": "reganm@catalystbible.com",
+      "instagram": "https://www.instagram.com/catalystbiblecollege/",
+      "applicationDropdownLabel": "Visalia, CA // Catalyst Bible College",
+      "applicationUrl": "https://connect.nelson.edu/apply/",
+      "siteDirector": null,
+      "staff": [
+        { "_type": "reference", "_ref": "person.mark-merrill" },
+        { "_type": "reference", "_ref": "person.mike-clarensau" },
+        { "_type": "reference", "_ref": "person.regan-munsey" },
+        { "_type": "reference", "_ref": "person.desi-brantley" },
+        { "_type": "reference", "_ref": "person.isidro-carrasco" }
+      ],
+      "heroImage": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2024/05/DSC04529-2-1024x683.jpg", "_status": "KEEP" },
+      "campusImage": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2023/04/ca-img-01-1024x683.jpg", "_status": "KEEP" },
+      "_migrationNotes": "Two real camera files worth re-uploading at full resolution rather than the 1024px derivatives. The About page also carries a 'Coming Soon / Coming Soon' staff card with a placeholder headshot; not imported. Site fee structure differs by site and lives in costItem, not here."
+    },
+    {
+      "_id": "site.the-chapel",
+      "_type": "site",
+      "name": "CBC: The Chapel",
+      "shortName": "CBC Virginia",
+      "slug": { "_type": "slug", "current": "thechapel" },
+      "isMainSite": false,
+      "status": "active",
+      "state": "VA",
+      "city": "NEEDS_VERIFICATION",
+      "hostChurch": "The Chapel",
+      "hostChurchDescription": "The Chapel is a life-giving, relational church with physical locations in central Virginia. Our passion is to provide a place where you can know God, find freedom and make a difference. With multiple church campuses in both English and Spanish, students will have the opportunity to learn and grow in a variety of ministries.",
+      "applicationDropdownLabel": "NEEDS_VERIFICATION",
+      "applicationUrl": "https://connect.nelson.edu/apply/",
+      "siteDirector": { "_type": "reference", "_ref": "person.genna-martin" },
+      "staff": [
+        { "_type": "reference", "_ref": "person.mark-merrill" },
+        { "_type": "reference", "_ref": "person.mike-clarensau" },
+        { "_type": "reference", "_ref": "person.regan-munsey" }
+      ],
+      "heroImage": { "_sourceUrl": "https://catalystbible.com/wp-content/uploads/2025/05/Screenshot-2025-05-22-at-1.46.40 PM.png", "_status": "REPLACE" },
+      "_migrationNotes": "Currently an orphan page at /thechapel/, not linked from any navigation. Live page tells applicants to 'Choose Catalyst Bible College during your application', which contradicts the Visalia instruction to choose 'Visalia, CA // Catalyst Bible College'. The exact Nelson dropdown value for this site must be confirmed. No address, phone, or city is published anywhere on the site."
+    },
+    {
+      "_id": "site.ohio",
+      "_type": "site",
+      "name": "CBC Ohio",
+      "shortName": "CBC Ohio",
+      "slug": { "_type": "slug", "current": "ohio" },
+      "isMainSite": false,
+      "status": "NEEDS_VERIFICATION",
+      "state": "OH",
+      "city": "NEEDS_VERIFICATION",
+      "hostChurch": "NEEDS_VERIFICATION",
+      "applicationDropdownLabel": "NEEDS_VERIFICATION",
+      "siteDirector": null,
+      "staff": [],
+      "_migrationNotes": "STUB. This site exists only as an option in the contact form dropdown on /contact/. It has no page, no staff, no address, and no content anywhere on the live site. Someone selecting it in the form has no way to learn anything about it. Either populate this record or remove the form option."
+    },
+    {
+      "_id": "site.compel-mississippi",
+      "_type": "site",
+      "name": "CBC Compel",
+      "shortName": "CBC Compel (Mississippi)",
+      "slug": { "_type": "slug", "current": "compel" },
+      "isMainSite": false,
+      "status": "NEEDS_VERIFICATION",
+      "state": "MS",
+      "city": "NEEDS_VERIFICATION",
+      "hostChurch": "NEEDS_VERIFICATION",
+      "applicationDropdownLabel": "NEEDS_VERIFICATION",
+      "siteDirector": null,
+      "staff": [],
+      "_migrationNotes": "STUB. Same as Ohio: exists only in the contact form dropdown, where the state is misspelled 'Mississipi'. Corrected here."
+    }
+  ],
+
+  "costItems": [
+    {
+      "_id": "cost.tuition-annual",
+      "_type": "costItem",
+      "label": "Annual Tuition",
+      "amount": 7320,
+      "frequency": "annual",
+      "appliesTo": "student",
+      "notes": "$305 per credit hour, 24 hours per year",
+      "effectiveTerm": "NEEDS_VERIFICATION",
+      "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+      "sortOrder": 10
+    },
+    {
+      "_id": "cost.site-fee",
+      "_type": "costItem",
+      "label": "Student Site Fee",
+      "amount": 2000,
+      "frequency": "perSemester",
+      "annualEquivalent": 4000,
+      "appliesTo": "student",
+      "notes": "Billed each Fall and Spring. Covers technology maintenance, administrative costs, partnership fees, student life activities, and practicum development. Students enrolled with Nelson University have this fee included in their Nelson bill.",
+      "effectiveTerm": "Fall 2025",
+      "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+      "sortOrder": 20,
+      "_migrationNotes": "RESOLVES A LIVE CONTRADICTION. /why/ calls this 'Annual Site Fee $4,000 ($2,000 in the Fall and $2,000 in the Spring)'. /studentlife/ calls it '$2,000 a semester in student fees'. Same money, two labels, two pages, readable as $6,000/year. One record now, rendered both ways from amount and annualEquivalent. Confirm the fee is still $2,000 for the current year, since the effective term is a year old."
+    },
+    {
+      "_id": "cost.graduation-fee",
+      "_type": "costItem",
+      "label": "Graduation Fee",
+      "amount": 150,
+      "frequency": "oneTime",
+      "appliesTo": "student",
+      "notes": "Paid the semester of graduation",
+      "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+      "sortOrder": 30
+    },
+    {
+      "_id": "cost.total-tuition-program",
+      "_type": "costItem",
+      "label": "Total Tuition Cost",
+      "amount": 36600,
+      "frequency": "fullProgram",
+      "appliesTo": "student",
+      "notes": "Used in the cost comparison against peer institutions. Does not include housing, meal plans, or general fees.",
+      "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+      "sortOrder": 40
+    },
+    {
+      "_id": "cost.housing",
+      "_type": "costItem",
+      "label": "Student Housing",
+      "amount": 450,
+      "frequency": "monthly",
+      "appliesTo": "student",
+      "notes": "Includes rent, utilities, and house furniture. Students have one or two roommates.",
+      "sites": [{ "_type": "reference", "_ref": "site.visalia" }],
+      "sortOrder": 50
+    },
+    {
+      "_id": "cost.scholarships-available",
+      "_type": "costItem",
+      "label": "Scholarships Available Annually",
+      "amount": 100000,
+      "frequency": "annual",
+      "appliesTo": "institution",
+      "notes": "The average CBC student graduates receiving close to $10,000 in scholarship dollars.",
+      "sortOrder": 60
+    }
+  ],
+
+  "costComparison": {
+    "_id": "costComparison.peer-tuition",
+    "_type": "costComparison",
+    "title": "Cost Comparison",
+    "intro": "This chart shows top Christian universities and their cost of tuition. The prices do not reflect the additional costs of housing, meal plans, and general fees that each student is required to pay. Through our partnership with Nelson University, students are able to apply for Federal Financial Aid, and Nelson offers a variety of scholarship opportunities. Price comparisons below represent actual private Christian institutions with similar degree programs.",
+    "entries": [
+      { "label": "School 1", "amount": 142140, "isUs": false },
+      { "label": "School 2", "amount": 121728, "isUs": false },
+      { "label": "School 3", "amount": 108560, "isUs": false },
+      { "label": "School 4", "amount": 103688, "isUs": false },
+      { "label": "School 5", "amount": 163200, "isUs": false },
+      { "label": "Catalyst Bible College", "amount": 36600, "isUs": true }
+    ],
+    "_migrationNotes": "Source intro contained a broken sentence: 'students are able to apply for Federal Financial Aid. and offers a variety of scholarship opportunities for students.' Repaired. Two substantive issues remain for you to decide: (1) anonymous 'School 1-5' labels are unverifiable and weaken an otherwise strong argument, either name them with a cited source year or reframe as a range; (2) School 5 at $163,200 is listed last but is the highest figure, so the chart is not sorted. As data it can now sort itself."
+  },
+
+  "disclosures": [
+    {
+      "_id": "disclosure.housing",
+      "_type": "disclosure",
+      "title": "Nelson University Student Housing Disclaimer",
+      "academicYear": "standing",
+      "body": "Nelson University-Catalyst Bible College does not have dormitory facilities under its control. The university does not have a responsibility to secure housing for students. Catalyst Bible College has a current arrangement with a local apartment complex for students needing housing. Students pay $450/month, which includes rent, utilities, and furniture. Students have one or two roommates, depending on the size and location of the apartment. Should students prefer a different option, other local apartments are available, with rent prices ranging from $1,800 to $2,300/month, depending on the desired size and location.",
+      "_migrationNotes": "Regulatory text. Carry over verbatim. Do not edit for style."
+    },
+    {
+      "_id": "disclosure.ca-nelson-link",
+      "_type": "disclosure",
+      "title": "California Disclosures from Nelson University",
+      "academicYear": "standing",
+      "body": "Click the link below to visit the Nelson University California Disclosures page.",
+      "documentUrl": "https://www.nelson.edu/academics/california-disclosures/"
+    },
+    {
+      "_id": "disclosure.print-2025-2026",
+      "_type": "disclosure",
+      "title": "Print Materials",
+      "academicYear": "2025-2026",
+      "documentUrl": "https://drive.google.com/drive/folders/19zavuJcxLDPCUH-QaKG-7aubcfXoe6v5?usp=sharing",
+      "publishedDate": null
+    },
+    {
+      "_id": "disclosure.print-2026-2027",
+      "_type": "disclosure",
+      "title": "Print Materials",
+      "academicYear": "2026-2027",
+      "documentUrl": null,
+      "status": "pending",
+      "_migrationNotes": "COMPLIANCE FLAG. Live site shows this as 'COMING SOON' with a dead '#' link, in August 2026, on a regulatory disclosure page, for an academic year already underway. Highest-priority content item in this entire migration."
+    }
+  ],
+
+  "accreditation": {
+    "_id": "accreditation.nelson",
+    "_type": "accreditationStatement",
+    "body": "Nelson University (formerly Southwestern Assemblies of God University) is named in honor of founder PC Nelson. The University's vision of being a distinguished Christian university that equips Spirit-empowered leaders with career and ministry skills by providing affordable education, hands-on training opportunities, and innovative academic programs remains unchanged. Nelson University is accredited by the Southern Association of Colleges and Schools Commission on Colleges (SACSCOC) to award associates, baccalaureate, master's and doctorate degrees. Degree-granting institutions also may offer credentials such as certificates and diplomas at approved degree levels. Questions about the accreditation of Nelson University may be directed in writing to the Southern Association of Colleges and Schools Commission on Colleges at 1866 Southern Lane, Decatur, Georgia 30033-4097, by calling 404-679-4500, or by using information available on SACSCOC's website www.sacscoc.org.",
+    "sacscocUrl": "https://www.sacscoc.org",
+    "nelsonAccreditationUrl": "https://www.nelson.edu/about/accreditation/",
+    "_migrationNotes": "Regulatory text, carried verbatim except the heading typo 'History of Nelson Universtity' which was corrected to 'University'. Do not edit the body for style."
+  }
+}
