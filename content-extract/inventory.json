@@ -1,0 +1,62 @@
+{
+  "extracted": "2026-08-17",
+  "source": "https://catalystbible.com/",
+  "scope_note": "Homepage plus all pages linked from the site nav. External links not followed. No login-gated content touched.",
+  "pages": [
+    { "url": "https://catalystbible.com/", "title": "Catalyst Bible College", "h1": "Where everyone majors in changing the world.", "meta_description": null, "file": "home.md" },
+    { "url": "https://catalystbible.com/about/", "title": "About – Catalyst Bible College", "h1": "About", "meta_description": null, "file": "about.md" },
+    { "url": "https://catalystbible.com/why/", "title": "Why CBC? – Catalyst Bible College", "h1": "Why CBC?", "meta_description": null, "file": "why-cbc.md" },
+    { "url": "https://catalystbible.com/programs/", "title": "Programs – Catalyst Bible College", "h1": "Programs", "meta_description": null, "file": "programs.md" },
+    { "url": "https://catalystbible.com/studentlife/", "title": "Student Life – Catalyst Bible College", "h1": "Student Life", "meta_description": null, "file": "student-life.md" },
+    { "url": "https://catalystbible.com/current/", "title": "Current Students – Catalyst Bible College", "h1": "Current Students", "meta_description": null, "file": "current-students.md" },
+    { "url": "https://catalystbible.com/contact/", "title": "Contact – Catalyst Bible College", "h1": "Contact", "meta_description": null, "file": "contact.md" },
+    { "url": "https://catalystbible.com/apply/", "title": "Apply Here – Catalyst Bible College", "h1": "Apply Here", "meta_description": null, "file": "apply.md" },
+    { "url": "https://catalystbible.com/ca_disc/", "title": "CA Disclosures – Catalyst Bible College", "h1": "CA Disclosures", "meta_description": null, "file": "ca-disclosures.md" }
+  ],
+  "nav_links_excluded_as_external": {
+    "Donate to CBC": "https://pushpay.com/g/catalystbiblecollege"
+  },
+  "images": [
+    { "file": "CBC-Logo-Nameplate-Horiz-ColorRev.png", "src": "https://catalystbible.com/wp-content/uploads/2022/10/CBC-Logo-Nameplate-Horiz-ColorRev.png", "pages": ["all (site header/footer)"], "alt": "", "role": "logo nameplate, white text + orange shield, for dark backgrounds" },
+    { "file": "CBC-Seal-White.png", "src": "https://catalystbible.com/wp-content/uploads/2022/10/CBC-Seal-White.png", "pages": ["all (site footer)"], "alt": "", "role": "circular seal, white" },
+    { "file": "cropped-CBC-Icon-Web.png", "src": "https://catalystbible.com/wp-content/uploads/2022/10/cropped-CBC-Icon-Web.png", "pages": ["all (favicon)"], "alt": "", "role": "site icon" },
+    { "file": "DSC04529-2.jpg", "src": "https://catalystbible.com/wp-content/uploads/2024/05/DSC04529-2.jpg", "pages": ["home"], "alt": "", "role": "students walking on campus" },
+    { "file": "DSC00024-web-e1701900009729.jpg", "src": "https://catalystbible.com/wp-content/uploads/2023/06/DSC00024-web-e1701900009729.jpg", "pages": ["about"], "alt": "", "role": "page hero/background" },
+    { "file": "ca-img-01.jpg", "src": "https://catalystbible.com/wp-content/uploads/2023/04/ca-img-01.jpg", "pages": ["about"], "alt": "", "context": "Location section" },
+    { "file": "DSC08493-scaled.jpg", "src": "https://catalystbible.com/wp-content/uploads/2024/08/DSC08493-scaled.jpg", "pages": ["why"], "alt": "", "role": "page hero/background" },
+    { "file": "hero-academics.jpg", "src": "https://catalystbible.com/wp-content/uploads/2022/10/hero-academics.jpg", "pages": ["programs"], "alt": "", "role": "page hero/background" },
+    { "file": "DSC04597-2-scaled.jpg", "src": "https://catalystbible.com/wp-content/uploads/2024/05/DSC04597-2-scaled.jpg", "pages": ["studentlife"], "alt": "", "role": "page hero/background" },
+    { "file": "DSC04584-scaled.jpg", "src": "https://catalystbible.com/wp-content/uploads/2024/07/DSC04584-scaled.jpg", "pages": ["current"], "alt": "", "role": "page hero/background" },
+    { "file": "Schedule.png", "src": "https://catalystbible.com/wp-content/uploads/2026/08/Schedule.png", "pages": ["current"], "alt": "", "context": "Main Site Weekly Schedule" },
+    { "file": "1.png", "src": "https://catalystbible.com/wp-content/uploads/2026/05/1.png", "pages": ["current"], "alt": "", "name": "UNKNOWN", "note": "sits under Fall 2026 Student Congress Representatives / calendar block, no adjacent label in DOM" },
+    { "file": "2.png", "src": "https://catalystbible.com/wp-content/uploads/2026/05/2.png", "pages": ["current"], "alt": "", "name": "UNKNOWN", "note": "same block, no adjacent label in DOM" },
+    { "file": "3.png", "src": "https://catalystbible.com/wp-content/uploads/2026/05/3.png", "pages": ["current"], "alt": "", "name": "UNKNOWN", "note": "same block, no adjacent label in DOM" },
+    { "file": "4.png", "src": "https://catalystbible.com/wp-content/uploads/2026/05/4.png", "pages": ["current"], "alt": "", "name": "UNKNOWN", "note": "same block, no adjacent label in DOM" },
+    { "file": "5.png", "src": "https://catalystbible.com/wp-content/uploads/2026/05/5.png", "pages": ["current"], "alt": "", "name": "UNKNOWN", "note": "same block, no adjacent label in DOM" },
+    { "file": "stefan-stefancik-5p_7M5MP2Iw-unsplash-web.jpg", "src": "https://catalystbible.com/wp-content/uploads/2022/11/stefan-stefancik-5p_7M5MP2Iw-unsplash-web.jpg", "pages": ["contact"], "alt": "", "role": "page hero/background, Unsplash stock" },
+    { "file": "Screenshot-2025-07-02-at-12.54.56-PM-e1751486134362.png", "src": "https://catalystbible.com/wp-content/uploads/2025/07/Screenshot-2025-07-02-at-12.54.56 PM-e1751486134362.png", "pages": ["apply"], "alt": "", "role": "application walkthrough visual" },
+    { "file": "Screenshot-2025-07-02-at-1.08.25-PM.png", "src": "https://catalystbible.com/wp-content/uploads/2025/07/Screenshot-2025-07-02-at-1.08.25 PM.png", "pages": ["apply"], "alt": "", "role": "application walkthrough screenshot", "context": "SOM Site Approval" }
+  ],
+  "staff_photos": [
+    { "file": "Screenshot-2026-02-09-at-11.49.06-AM.png", "src": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.06-AM.png", "page": "about", "alt": "", "name": "Dr. Mark Merrill", "title": "President/Founder", "label_source": "h3 heading immediately after the image in the same DOM block" },
+    { "file": "Screenshot-2025-02-10-at-12.28.49-PM.png", "src": "https://catalystbible.com/wp-content/uploads/2025/02/Screenshot-2025-02-10-at-12.28.49 PM.png", "page": "about", "alt": "", "name": "Dr. Mike Clarensau", "title": "Vice President of Academics", "label_source": "h3 heading immediately after the image in the same DOM block" },
+    { "file": "Screenshot-2026-02-09-at-11.49.41-AM.png", "src": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.41-AM.png", "page": "about", "alt": "", "name": "Regan Munsey", "title": "Vice President of Operations", "label_source": "h3 heading immediately after the image in the same DOM block" },
+    { "file": "Screenshot-2026-02-09-at-11.49.34-AM.png", "src": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.34-AM.png", "page": "about", "alt": "", "name": "Desi Brantley", "title": "Student Success Coordinator", "label_source": "h3 heading immediately after the image in the same DOM block" },
+    { "file": "Screenshot-2026-04-27-at-10.10.42-AM.png", "src": "https://catalystbible.com/wp-content/uploads/2026/04/Screenshot-2026-04-27-at-10.10.42-AM.png", "page": "about", "alt": "", "name": "UNKNOWN", "title": null, "note": "DOM label reads 'Coming Soon', a placeholder slot, not a person's name" },
+    { "file": "Screenshot-2026-02-09-at-11.49.16-AM.png", "src": "https://catalystbible.com/wp-content/uploads/2026/02/Screenshot-2026-02-09-at-11.49.16-AM.png", "page": "about", "alt": "", "name": "Isidro Carrasco", "title": "Community Relationship Liaison", "label_source": "h3 heading immediately after the image in the same DOM block" }
+  ],
+  "download_report": {
+    "total_unique_images_found": 25,
+    "downloaded": 25,
+    "failed": 0,
+    "notes": [
+      "Full-size originals were fetched where they exist; -WxH size variants were collapsed to their originals.",
+      "Three filenames contain a Unicode narrow no-break space; saved with '-' in its place.",
+      "All alt attributes on the source site are empty strings.",
+      "The why/ page cost chart and the studentlife/ globe are rendered by page scripts, not image files. The World Experience video on why/ is an embedded video, not captured here.",
+      "This workspace's network cannot fetch from catalystbible.com directly, so images were downloaded through the build sandbox and bundled. Files land in content-extract/img/ once the bundle below is added to the repo."
+    ],
+    "bundle_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DyhHTzXMdbzWBxpC8P1Pz3qBF3/a387d7e3-5435-491d-9b74-11b2b50f2949.zip",
+    "bundle_contents": "img/ folder with all 25 files, original filenames"
+  }
+}
