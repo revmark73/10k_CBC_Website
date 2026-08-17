@@ -230,7 +230,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; letter-spacing
 
 /* ---------- cost chart ---------- */
 .chart { margin: var(--s8) 0 var(--s6); display: grid; gap: var(--s3); }
-.chart-row { display: grid; grid-template-columns: 130px 1fr 110px; gap: var(--s4); align-items: center; }
+.chart-row { display: grid; grid-template-columns: 40px 130px 1fr 110px; gap: var(--s4); align-items: center; }
+.chart-state {
+  width: 40px; height: 40px; border-radius: 6px;
+  background: rgba(23, 18, 14, .06); border: 1px solid rgba(23, 18, 14, .10);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s var(--ease);
+}
+.chart-state svg { width: 28px; height: 28px; }
+.chart-state path { fill: #b3a68c; transition: fill .25s var(--ease); }
+.chart-row:hover .chart-state { background: rgba(23, 18, 14, .10); }
+.chart-row:hover .chart-state path { fill: #97876a; }
+.chart-row--cbc .chart-state { background: var(--ink); border-color: var(--ink); box-shadow: 0 0 18px rgba(232, 150, 63, .35); }
+.chart-row--cbc .chart-state path { fill: var(--ember); filter: drop-shadow(0 0 4px rgba(255, 196, 107, .8)); }
 .chart-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #6e6252; }
 .chart-track { background: rgba(23, 18, 14, .08); border-radius: 3px; height: 34px; overflow: hidden; }
 .chart-bar {
@@ -245,7 +257,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; letter-spacing
 .chart-row--cbc .chart-num { color: #b06a1c; font-size: 21px; }
 .chart-note { font-size: 14px; color: #7a6c58; font-style: italic; }
 @media (max-width: 640px) {
-  .chart-row { grid-template-columns: 90px 1fr 84px; }
+  .chart-row { grid-template-columns: 32px 78px 1fr 84px; gap: var(--s2); }
+  .chart-state { width: 32px; height: 32px; }
+  .chart-state svg { width: 22px; height: 22px; }
   .chart-num { font-size: 15px; }
 }
 
