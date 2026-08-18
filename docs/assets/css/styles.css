@@ -403,14 +403,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; letter-spacing
 .site-footer { background: #100c09; padding: var(--s8) clamp(20px, 5vw, 64px) var(--s7); }
 .footer-inner {
   max-width: var(--max); margin: 0 auto;
-  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--s7);
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--s7);
 }
 .footer-brand img { height: 44px; width: auto; margin-bottom: var(--s4); }
 .site-footer p, .site-footer a { font-size: 14.5px; color: var(--stone-dark); }
 .site-footer a { text-decoration: none; transition: color .2s; }
 .site-footer a:hover { color: var(--glow); }
 .footer-col h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone); margin-bottom: var(--s4); }
-.footer-col li { list-style: none; margin-bottom: var(--s3); }
+.footer-col li { list-style: none; margin-bottom: var(--s3); font-size: 14.5px; color: var(--stone-dark); }
 .footer-legal {
   max-width: var(--max); margin: var(--s7) auto 0; padding-top: var(--s5);
   border-top: 1px solid #241d15;
