@@ -121,8 +121,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; letter-spacing
 .btn--ghost:hover { border-color: var(--ember); color: var(--glow); box-shadow: none; }
 
 /* ---------- hero scrub ---------- */
-.hero { position: relative; height: 480vh; background: var(--ink); }
-.hero-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.hero { position: relative; height: 100vh; height: 100svh; background: var(--ink); }
+.hero-stage { position: relative; height: 100%; overflow: hidden; }
 .hero-media, .hero-poster {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: center;
