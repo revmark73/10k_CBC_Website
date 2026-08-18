@@ -65,7 +65,8 @@
       if (key !== r.state) {
         r.state = key;
         r.el.style.opacity = o.toFixed(3);
-        r.el.style.transform = "translate(-50%," + ((p - mid) * -60).toFixed(1) + "px)";
+        /* X centering lives in the stylesheet; only drift vertically here */
+        r.el.style.transform = "translateY(" + ((p - mid) * -60).toFixed(1) + "px)";
       }
     }
     var on = p >= 0.86;
