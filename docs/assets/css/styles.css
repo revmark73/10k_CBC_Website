@@ -162,8 +162,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; letter-spacing
   font-size: clamp(26px, 4.2vw, 54px); line-height: 1.15;
   color: var(--parchment);
   padding: .35em .8em; border-radius: 8px;
-  background: radial-gradient(ellipse 100% 130% at 50% 50%, rgba(23,18,14,.68), rgba(23,18,14,.3) 60%, transparent);
-  text-shadow: 0 2px 24px rgba(23,18,14,.95), 0 1px 6px rgba(23,18,14,.9);
+  text-shadow:
+    0 2px 10px rgba(23,18,14,.95),
+    0 4px 28px rgba(23,18,14,.9),
+    0 0 60px rgba(23,18,14,.8),
+    0 1px 3px rgba(23,18,14,1);
 }
 
 .hero-settle {
