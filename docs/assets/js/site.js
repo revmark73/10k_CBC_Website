@@ -1,3 +1,13 @@
+/* Open every page at the top unless the link names a section (WO-40).
+   Some browsers and embedded viewers keep the last page's scroll position. */
+(function () {
+  try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
+  var toTop = function () { if (!location.hash) window.scrollTo(0, 0); };
+  toTop();
+  window.addEventListener("load", toTop);
+  window.addEventListener("pageshow", toTop);
+})();
+
 /* Page life: header state, reveals, cost chart, counters, ember particles.
    Everything eases; nothing snaps. Reduced motion turns the extras off. */
 (function () {
