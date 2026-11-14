@@ -131,6 +131,60 @@
     });
   }
 
+  /* contact form, WO-36. Posts to Catalyst Connect. No cookies, nothing kept
+     in the browser after it is sent. */
+  var form = document.getElementById("inquiryForm");
+  if (form) {
+    var ENDPOINT = "https://base44.app/api/apps/6a56c72b8c54830021111967/functions/webInquiry";
+    var opened = Date.now();
+    var status = form.querySelector(".form-status");
+    var button = form.querySelector("button[type=submit]");
+    var say = function (text, kind) {
+      status.textContent = text;
+      status.className = "form-status" + (kind ? " is-" + kind : "");
+    };
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      form.querySelectorAll("[aria-invalid]").forEach(function (el) { el.removeAttribute("aria-invalid"); });
+      var f = form.elements;
+      var age = (form.querySelector("input[name=age_statement]:checked") || {}).value || "";
+      if (age === "under_13") {
+        say("Thanks for your interest! Because you're under 13, please ask a parent or guardian to call us at 559-733-9070.", "error");
+        return;
+      }
+      var missing = ["first_name", "last_name", "email", "campus"].filter(function (n) { return !f[n].value.trim(); });
+      if (missing.length) {
+        missing.forEach(function (n) { f[n].setAttribute("aria-invalid", "true"); });
+        f[missing[0]].focus();
+        say("Please fill in your name, email and campus.", "error");
+        return;
+      }
+      if (!age) { say("Please tell us your age group.", "error"); return; }
+      if (!f.consent_contact.checked) { say("Please tick the box that lets us contact you.", "error"); return; }
+      var payload = {
+        first_name: f.first_name.value, last_name: f.last_name.value, email: f.email.value,
+        phone: f.phone.value, campus: f.campus.value, grad_year: f.grad_year.value,
+        heard_from: f.heard_from.value, message: f.message.value,
+        age_statement: age, consent_contact: true,
+        company: f.company.value, open_ms: Date.now() - opened
+      };
+      button.disabled = true;
+      say("Sending...");
+      fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (res) {
+          if (res && res.ok) {
+            form.reset();
+            say("Thank you. Your question is on its way, and someone from our team will be in touch soon.", "done");
+          } else {
+            say((res && res.error) || "We couldn't send that just now. Please try again, or call 559-733-9070.", "error");
+          }
+        })
+        .catch(function () { say("We couldn't send that just now. Please try again, or call 559-733-9070.", "error"); })
+        .then(function () { button.disabled = false; });
+    });
+  }
+
   /* graceful portraits: swap broken photos for monograms */
   document.querySelectorAll(".team-photo img").forEach(function (img) {
     img.addEventListener("error", function () {

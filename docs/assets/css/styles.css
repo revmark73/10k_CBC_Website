@@ -460,3 +460,30 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; letter-spacing
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
 }
+
+/* ---------- contact form (WO-36) ---------- */
+html:not(.js) .inquiry { display: none; }
+.inquiry { margin-top: var(--s6); max-width: 760px; display: grid; gap: var(--s4); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+@media (max-width: 640px) { .field-row { grid-template-columns: 1fr; } }
+.field { display: grid; gap: 6px; border: 0; padding: 0; margin: 0; }
+.field > span, .field legend { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #6b5d48; }
+.field em { font-style: normal; text-transform: none; letter-spacing: 0; color: #8a7c64; }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: 16px; color: var(--ink);
+  background: var(--parchment); border: 1px solid rgba(23,18,14,.22); border-radius: 8px;
+  padding: 12px 14px; width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--ember); outline-offset: 1px; border-color: var(--ember); }
+.field [aria-invalid="true"] { border-color: #b3401d; }
+.age { gap: 10px; }
+.choice { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; color: #3d3428; line-height: 1.45; }
+.choice input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--ember); flex: none; }
+.consent a { color: #b06a1c; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.inquiry .btn { justify-self: start; border: 0; cursor: pointer; }
+.inquiry .btn[disabled] { opacity: .6; cursor: wait; }
+.form-status { min-height: 1.5em; font-size: 16px; color: #3d3428; }
+.form-status.is-error { color: #b3401d; }
+.form-status.is-done { color: #2f6b2f; font-weight: 500; }
+.no-js-note { font-size: 15px; color: #6b5d48; }
