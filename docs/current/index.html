@@ -11,13 +11,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/subpage.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
   <header class="site-header is-scrolled">
     <a class="brand" href="../index.html" aria-label="Catalyst Bible College home">
       <img src="../assets/img/cbc-logo-nameplate.png" alt="Catalyst Bible College">
     </a>
-    <nav class="nav" aria-label="Main">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#programs">Degrees</a>
+      <a href="../current/">Current Students</a>
+      <a href="../schedule/">Schedule a Meeting</a>
+      <a href="../index.html#contact">Contact</a>
       <a class="btn" href="https://connect.nelson.edu/apply/">Apply</a>
     </nav>
   </header>
@@ -36,6 +43,8 @@
       <li><a href="https://docs.google.com/document/d/14Z0-HhuZRpfGvolHSs50rg5FfnkmDwe67dFM6UIYvLU/edit?usp=sharing">Student handbook</a></li>
       <li><a href="https://drive.google.com/file/d/1xfHBJllGoITPTaQ-P0X0QeK5Y6d2XHCo/view?usp=sharing">Student housing handbook and application</a></li>
       <li><a href="https://canva.link/7qz40082awg37rn">Fall 2026 presentation</a></li>
+      <li><a href="../forge/">The Forge</a></li>
+      <li><a href="../s3/">S3 session materials</a></li>
     </ul>
 
     <h2>Main Site Weekly Schedule</h2>
@@ -58,10 +67,56 @@
     <p class="back"><a href="../index.html">Back to the home page</a></p>
   </main>
   <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/img/cbc-logo-nameplate.png" alt="Catalyst Bible College">
+        <p>Powered by Nelson University.<br>Main campus: 3737 S Akers Street, Visalia, CA 93277<br><a href="tel:+15597339070">559-733-9070</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Campuses</h4>
+        <ul>
+          <li><a href="../index.html#contact">Visalia, CA</a></li>
+          <li><a href="../thechapel/">Midlothian, VA</a></li>
+          <li><a href="../ohio/">Poland, OH</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../index.html#cost">What it costs</a></li>
+          <li><a href="../index.html#programs">Degree programs</a></li>
+          <li><a href="../index.html#world">World Experience</a></li>
+          <li><a href="../index.html#life">Student life</a></li>
+          <li><a href="../signing-day/">Signing Day</a></li>
+          <li><a href="../index.html#contact">Ask a question</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Students</h4>
+        <ul>
+          <li><a href="../current/">Current students</a></li>
+          <li><a href="../schedule/">Schedule a meeting</a></li>
+          <li><a href="../forge/">The Forge</a></li>
+          <li><a href="../s3/">S3</a></li>
+          <li><a href="../textbook-request/">Textbook request</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://connect.nelson.edu/apply/">Apply</a></li>
+          <li><a href="https://www.instagram.com/catalystbiblecollege/">Instagram</a></li>
+          <li><a href="https://www.nelson.edu">Nelson University</a></li>
+          <li><a href="../privacy.html">Privacy Notice</a></li>
+          <li><a href="../ca_disc/">CA Disclosures</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-legal">
       <span>© Catalyst Bible College. All rights reserved.</span>
-      <span><a href="../privacy.html">Privacy Notice</a></span>
+      <span>Soli Deo Gloria.</span>
     </div>
   </footer>
+  <script src="../assets/js/site.js"></script>
 </body>
 </html>
