@@ -61,7 +61,7 @@
     for (var i = 0; i < bandRanges.length; i++) {
       var r = bandRanges[i];
       var mid = (r.from + r.to) / 2;
-      var half = (r.to - r.from) / 2 + 0.35; /* soft shoulders */
+      var half = (r.to - r.from) / 2; /* fade inside the band so captions never overlap */
       var d = Math.abs(t - mid);
       var o = d >= half ? 0 : 1 - Math.pow(d / half, 2.4);
       var key = Math.round(o * 40);

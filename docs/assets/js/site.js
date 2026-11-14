@@ -28,8 +28,27 @@
   document.querySelectorAll(".reveal, .cred, .world").forEach(function (el) { io.observe(el); });
 
   /* cost chart: bars rise and numbers count when seen */
+  /* phone menu */
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("mainNav");
+  if (toggle && nav) {
+    var setMenu = function (open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("is-open")); });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  }
+
   var chart = document.querySelector(".chart");
   if (chart) {
+    /* the page ships with real bars and figures; zero them only so they can rise */
+    chart.querySelectorAll(".chart-row").forEach(function (row) {
+      row.querySelector(".chart-bar").style.width = "0%";
+      row.querySelector(".chart-num").firstChild.nodeValue = "$0";
+    });
     var cio = new IntersectionObserver(function (entries) {
       if (!entries[0].isIntersecting) return;
       cio.disconnect();
@@ -40,12 +59,12 @@
         var max = 163200;
         setTimeout(function () {
           bar.style.width = (val / max * 100).toFixed(1) + "%";
-          if (reduced) { num.textContent = "$" + val.toLocaleString("en-US"); return; }
+          if (reduced) { num.firstChild.nodeValue = "$" + val.toLocaleString("en-US"); return; }
           var t0 = performance.now();
           (function count(t) {
             var k = Math.min((t - t0) / 1400, 1);
             var eased = 1 - Math.pow(1 - k, 3);
-            num.textContent = "$" + Math.round(val * eased).toLocaleString("en-US");
+            num.firstChild.nodeValue = "$" + Math.round(val * eased).toLocaleString("en-US");
             if (k < 1) requestAnimationFrame(count);
           })(t0);
         }, i * 140);

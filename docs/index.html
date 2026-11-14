@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
@@ -21,7 +22,8 @@
     <a class="brand" href="#top" aria-label="Catalyst Bible College, back to top">
       <img src="assets/img/cbc-logo-nameplate.png" alt="Catalyst Bible College" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-word',innerHTML:'CATALYST <span>BIBLE COLLEGE</span>'}))">
     </a>
-    <nav class="nav" aria-label="Main">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav" aria-label="Main">
       <a href="#cost">The Math</a>
       <a href="#programs">Degrees</a>
       <a href="#world">World</a>
@@ -49,7 +51,7 @@
         <img class="hero-seal" src="assets/img/cbc-seal-white.png" alt="" onerror="this.remove()">
         <span class="eyebrow">Visalia, CA · Midlothian, VA · Poland, OH · Spokane, WA</span>
         <h1 class="h-display text-glow">Where everyone majors in changing the world.</h1>
-        <p class="lede">A Nelson University bachelor's degree, forged in a working church, and positioned to change the world!</p>
+        <p class="lede">A Nelson University bachelor's degree, earned inside a healthy church.</p>
         <div class="hero-cta-row">
           <a class="btn" href="https://connect.nelson.edu/apply/">Start Your Application</a>
           <a class="btn btn--ghost" href="#cost">See what it costs ↓</a>
@@ -76,45 +78,46 @@
       <h2 class="h-section reveal">Change the world.<br>Skip the debt.</h2>
       <p class="lede reveal" data-delay="1">Four years at a private Christian university routinely costs six figures. Catalyst was built to break that pattern.</p>
 
-      <div class="chart" role="img" aria-label="Four-year tuition comparison: five private Christian schools in California, Washington, Florida, Minnesota, and Missouri between 103,688 and 163,200 dollars, Catalyst Bible College in California, 36,600 dollars.">
+      <div class="chart" role="img" aria-label="Four-year tuition comparison: five private Christian schools in California, Washington, Florida, Minnesota, and Missouri between 103,688 and 163,200 dollars, Catalyst Bible College in California, 36,600 dollars in tuition, or 52,600 dollars with site fees.">
         <div class="chart-row" data-value="163200">
           <span class="chart-state" title="Located in California"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M16 3 L54 3 L54 36 L88 72 L90 88 L62 88 L54 81 Q38 64 27 45 Q19 30 16 14 Z"/></svg></span>
           <span class="chart-label">School 1<span class="sr-only">, located in California</span></span>
-          <div class="chart-track"><div class="chart-bar"></div></div>
-          <span class="chart-num">$0</span>
+          <div class="chart-track"><div class="chart-bar" style="width:100.0%"></div></div>
+          <span class="chart-num">$163,200</span>
         </div>
         <div class="chart-row" data-value="142140">
           <span class="chart-state" title="Located in Washington"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 22 L90 22 L90 80 L34 80 Q22 72 24 62 L12 68 L18 52 L8 47 L16 38 L10 30 Z"/></svg></span>
           <span class="chart-label">School 2<span class="sr-only">, located in Washington</span></span>
-          <div class="chart-track"><div class="chart-bar"></div></div>
-          <span class="chart-num">$0</span>
+          <div class="chart-track"><div class="chart-bar" style="width:87.1%"></div></div>
+          <span class="chart-num">$142,140</span>
         </div>
         <div class="chart-row" data-value="121728">
           <span class="chart-state" title="Located in Florida"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M6 20 L52 25 L68 16 Q84 38 78 62 Q74 80 68 90 L62 84 Q58 62 52 44 L44 33 L10 30 Z"/></svg></span>
           <span class="chart-label">School 3<span class="sr-only">, located in Florida</span></span>
-          <div class="chart-track"><div class="chart-bar"></div></div>
-          <span class="chart-num">$0</span>
+          <div class="chart-track"><div class="chart-bar" style="width:74.6%"></div></div>
+          <span class="chart-num">$121,728</span>
         </div>
         <div class="chart-row" data-value="108560">
           <span class="chart-state" title="Located in Minnesota"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 8 L54 8 L58 2 L76 12 L94 20 L70 34 L72 90 L22 90 Z"/></svg></span>
           <span class="chart-label">School 4<span class="sr-only">, located in Minnesota</span></span>
-          <div class="chart-track"><div class="chart-bar"></div></div>
-          <span class="chart-num">$0</span>
+          <div class="chart-track"><div class="chart-bar" style="width:66.5%"></div></div>
+          <span class="chart-num">$108,560</span>
         </div>
         <div class="chart-row" data-value="103688">
           <span class="chart-state" title="Located in Missouri"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 14 L80 12 L88 26 L80 46 L86 68 L78 82 L70 82 L72 93 L61 93 L61 83 L14 84 Z"/></svg></span>
           <span class="chart-label">School 5<span class="sr-only">, located in Missouri</span></span>
-          <div class="chart-track"><div class="chart-bar"></div></div>
-          <span class="chart-num">$0</span>
+          <div class="chart-track"><div class="chart-bar" style="width:63.5%"></div></div>
+          <span class="chart-num">$103,688</span>
         </div>
         <div class="chart-row chart-row--cbc" data-value="36600">
           <span class="chart-state" title="Located in California"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M16 3 L54 3 L54 36 L88 72 L90 88 L62 88 L54 81 Q38 64 27 45 Q19 30 16 14 Z"/></svg></span>
           <span class="chart-label">Catalyst<span class="sr-only">, located in California</span></span>
-          <div class="chart-track"><div class="chart-bar"></div></div>
-          <span class="chart-num">$0</span>
+          <div class="chart-track"><div class="chart-bar" style="width:22.4%"></div></div>
+          <span class="chart-num">$36,600<sup class="chart-star">*</sup></span>
         </div>
       </div>
       <p class="chart-note">Real prices from private Christian institutions with similar degree programs. Total four-year tuition, before housing and fees.</p>
+      <p class="chart-note chart-note--star"><span aria-hidden="true">*</span> Catalyst tuition only. Add the $2,000 site fee each semester and the four-year total comes to $52,600, still about half of the lowest-priced school above.</p>
 
       <div class="scholar-strip reveal">
         <div>
@@ -123,13 +126,13 @@
         </div>
         <div>
           <div class="scholar-num">~$10,000</div>
-          <p>of it goes home with the average graduate.</p>
+          <p>in scholarships for the average graduate.</p>
         </div>
       </div>
 
       <div class="fee-cards">
         <div class="fee-card reveal"><span class="num">$7,320</span><p>tuition a year, at $305 per credit hour.</p></div>
-        <div class="fee-card reveal" data-delay="1"><span class="num">$2,000</span><p>site fee each semester, covering practicums and student life.</p></div>
+        <div class="fee-card reveal" data-delay="1"><span class="num">$2,000</span><p>site fee each semester, covering practicums and student life.<sup>*</sup></p></div>
         <div class="fee-card reveal" data-delay="2"><span class="num">$150</span><p>graduation fee. Once, ever.</p></div>
       </div>
     </div>
@@ -145,49 +148,49 @@
       <div class="prog-grid">
         <article class="prog-card reveal">
           <span class="deg">B.A. · On campus</span>
-          <h3>Church Leadership</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-s-degree-in-church-leadership/">Church Leadership</a></h3>
           <p>Practical ministry for the modern church, with 24 hours of specialization you choose.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
         </article>
         <article class="prog-card reveal" data-delay="1">
           <span class="deg">B.A.</span>
-          <h3>Bible and Theology</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-of-arts-in-bible-and-theology/">Bible and Theology</a></h3>
           <p>Deep scripture and theology, built for ministries and careers that hold weight.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
         </article>
         <article class="prog-card reveal" data-delay="2">
           <span class="deg">B.A. · With Convoy of Hope · On campus</span>
-          <h3>Humanitarian Relief and Development</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-s-degree-in-humanitarian-relief-and-development/">Humanitarian Relief and Development</a></h3>
           <p>Compassion work, poverty alleviation, and community development with a world humanitarian leader.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
         </article>
         <article class="prog-card reveal">
           <span class="deg">B.A.</span>
-          <h3>Business</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-s-degree-in-business/">Business</a></h3>
           <p>A solid business foundation with minors in accounting, administration, or marketing.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
         </article>
         <article class="prog-card reveal" data-delay="1">
           <span class="deg">B.A.</span>
-          <h3>Human Services</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-s-degree-in-human-services/">Human Services</a></h3>
           <p>A path toward criminal justice, social work, counseling, or psychology.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
         </article>
         <article class="prog-card reveal" data-delay="2">
           <span class="deg">B.A. · Pre-professional</span>
-          <h3>Education</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-s-degree-in-education-pre-professional-track/">Education</a></h3>
           <p>The skills and classroom experience to teach, or to keep studying education at the next level.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
         </article>
         <article class="prog-card reveal">
           <span class="deg">B.A.</span>
-          <h3>Interdisciplinary Studies</h3>
+          <h3><a class="prog-link" href="https://www.nelson.edu/academics/programs/bachelor-s-degree-in-interdisciplinary-studies/">Interdisciplinary Studies</a></h3>
           <p>Draw from several fields at once and graduate a more versatile professional.</p>
           <span class="units">120 units</span>
           <svg class="mtn" viewBox="0 0 100 100" aria-hidden="true"><path d="M10 90 L45 25 L60 55 L72 35 L95 90 Z"/></svg>
@@ -202,7 +205,7 @@
     <div class="world-bg" aria-hidden="true"><img src="assets/img/still-globe.jpg" alt="" onerror="this.parentElement.remove()"></div>
     <div class="section-inner">
       <span class="eyebrow reveal">Catalyst World Experience</span>
-      <h2 class="h-section text-glow reveal">Four countries before you graduate.</h2>
+      <h2 class="h-section text-glow reveal">Four regions of the world before you graduate.</h2>
       <p class="lede reveal" data-delay="1" style="color:var(--stone)">Every eligible student travels all four regions during their four years, at no additional cost, through partners and donors who believe in what happens when students see the world they're called to.</p>
 
       <svg class="world-svg" viewBox="0 0 720 260" aria-hidden="true">
@@ -241,7 +244,7 @@
     <div class="section-inner">
       <span class="eyebrow reveal">Who's Behind This</span>
       <blockquote class="reveal">
-        <p class="quote">"We built Catalyst so no student has to choose between a calling and common sense."</p>
+        <p class="quote">“Nobody should have to pick between answering God’s call and walking out of school with a pile of debt. That’s why we built Catalyst.”</p>
         <p class="quote-attr">Dr. Mark Merrill · President and Founder</p>
       </blockquote>
       <div class="team-row">
