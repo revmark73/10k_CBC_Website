@@ -36,7 +36,12 @@
      8. A Skip button is always visible while it plays. */
   var FILM = {
     src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4",
-    captions: IMG.replace(/img\/$/, "video/") + "sparty-intro.vtt",
+    captions: [
+      [0.3, 4.0, "Behold! From the fires of the forge...\nI am SPARTY!"],
+      [4.0, 9.0, "At Catalyst Bible College, everyone\nmajors in changing the world!"],
+      [9.0, 12.0, "A real degree. No mountain of debt."],
+      [12.0, 14.9, "Got a question? Bring it on!"]
+    ],
     poster: IMG + "sparty-intro-poster.jpg",
     seenKey: "cbc-sparty-film-seen",
     quietDays: 30,
@@ -278,12 +283,12 @@
     video.preload = "none";
     video.poster = FILM.poster;
     video.setAttribute("aria-label", "Sparty's 15 second welcome");
-    var track = document.createElement("track");
-    track.kind = "captions";
-    track.srclang = "en";
-    track.label = "English";
-    track.src = FILM.captions;
-    video.appendChild(track);
+    var cc = null;
+    try {
+      cc = video.addTextTrack("captions", "English", "en");
+      FILM.captions.forEach(function (c) { cc.addCue(new VTTCue(c[0], c[1], c[2])); });
+      cc.mode = "hidden";
+    } catch (e) { cc = null; }
 
     var playBtn = el("button", "sparty-film-play");
     playBtn.type = "button";
@@ -304,7 +309,7 @@
     var loaded = false;
     function load() { if (!loaded) { loaded = true; video.src = FILM.src; } }
     function setCaptions(on) {
-      try { video.textTracks[0].mode = on ? "showing" : "hidden"; } catch (e) {}
+      if (cc) cc.mode = on ? "showing" : "hidden";
     }
     function setState(s) { box.setAttribute("data-state", s); }
     setState("idle");
