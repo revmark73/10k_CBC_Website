@@ -487,3 +487,5 @@ html:not(.js) .inquiry { display: none; }
 .form-status.is-error { color: #b3401d; }
 .form-status.is-done { color: #2f6b2f; font-weight: 500; }
 .no-js-note { font-size: 15px; color: #6b5d48; }
+
+.inquiry[hidden] { display: none !important; }

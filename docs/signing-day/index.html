@@ -34,6 +34,43 @@
 
     <h2>Register for Signing Day</h2>
     <p class="notice">The next Signing Day date, time and registration will be posted here soon. Questions? Call <a href="tel:+15597339070">559-733-9070</a>.</p>
+    <!-- To open sign-ups: put the date, time and place in the notice above, then delete the word hidden on the form below. -->
+    <form class="inquiry" id="signingForm" data-kind="signing_day" data-required="first_name last_name email phone campus shirt_size" data-done="You're registered. We'll see you at Signing Day!" method="post" action="#signingForm" novalidate hidden>
+      <div class="field-row">
+        <label class="field"><span>First name on your application</span><input name="first_name" autocomplete="given-name" required maxlength="80"></label>
+        <label class="field"><span>Last name on your application</span><input name="last_name" autocomplete="family-name" required maxlength="80"></label>
+      </div>
+      <div class="field-row">
+        <label class="field"><span>Email on your application</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+        <label class="field"><span>Phone on your application</span><input name="phone" type="tel" autocomplete="tel" required maxlength="40"></label>
+      </div>
+      <div class="field-row">
+        <label class="field"><span>Campus</span>
+          <select name="campus" required>
+            <option value="visalia" selected>Visalia, CA</option>
+            <option value="midlothian">Midlothian, VA</option>
+            <option value="poland">Poland, OH</option>
+          </select>
+        </label>
+        <label class="field"><span>T-shirt size (unisex fit)</span>
+          <select name="shirt_size" required>
+            <option value="">Choose a size</option>
+            <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
+          </select>
+        </label>
+      </div>
+      <label class="choice"><input type="checkbox" name="application_started" required> I have started or completed my Nelson University application.</label>
+      <fieldset class="field age">
+        <legend>Your age</legend>
+        <label class="choice"><input type="radio" name="age_statement" value="adult" required> I'm 18 or older.</label>
+        <label class="choice"><input type="radio" name="age_statement" value="minor_with_parent"> I'm 13 to 17, and my parent or guardian knows I'm signing up.</label>
+        <label class="choice"><input type="radio" name="age_statement" value="under_13"> I'm under 13.</label>
+      </fieldset>
+      <label class="choice consent"><input type="checkbox" name="consent_contact" required> Catalyst Bible College may contact me by email or phone about Signing Day and enrolling. I've read the <a href="../privacy.html">Privacy Notice</a>.</label>
+      <div class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit">Sign me up</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
 
     <h2>Apply to Catalyst Bible College</h2>
     <p><a class="btn" href="https://connect.nelson.edu/apply/">Start your application</a></p>
@@ -54,5 +91,6 @@
       <span><a href="../privacy.html">Privacy Notice</a> · <a href="../ca_disc/">CA Disclosures</a></span>
     </div>
   </footer>
+  <script src="../assets/js/site.js"></script>
 </body>
 </html>

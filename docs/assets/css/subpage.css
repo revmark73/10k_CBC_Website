@@ -29,3 +29,5 @@ body { background: var(--parchment); }
 .hero-img { width: 100%; max-height: 320px; object-fit: contain; border: 0 !important; margin-bottom: 20px; }
 .policy .inquiry { margin-top: 16px; }
 .links .pending { display: block; padding: 14px 18px; border: 1px dashed rgba(23,18,14,.25); border-radius: 10px; color: #6b5d48; }
+
+.inquiry[hidden] { display: none !important; }

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Textbook Request · Catalyst Bible College</title>
+  <meta name="description" content="Request help with a textbook for a Catalyst Bible College course.">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <header class="site-header is-scrolled">
+    <a class="brand" href="../index.html" aria-label="Catalyst Bible College home">
+      <img src="../assets/img/cbc-logo-nameplate.png" alt="Catalyst Bible College">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a class="btn" href="https://connect.nelson.edu/apply/">Apply</a>
+    </nav>
+  </header>
+  <main class="policy">
+    <span class="eyebrow">Current Students</span>
+    <h1>Textbook Request</h1>
+    <p class="notice" id="tbClosed"><strong>Requests are closed for the Fall 2026 semester.</strong></p>
+    <p>Requesting a textbook does not guarantee that Catalyst will be able to purchase it for you. If you have questions about your request, visit the Student Life Office.</p>
+    <p>This service is only for on-campus Catalyst Bible College students during the Fall and Spring semesters. The most we can cover is $50 per student. First priority goes to on-campus Church Leadership and Theology undergraduates. Requests close on the day intake packets are due.</p>
+    <p>Textbook funds are graciously donated by the Visalia First Men's Ministry.</p>
+    <!-- To open requests for a new semester: delete the tbClosed notice above and the word hidden on the form below. -->
+    <form class="inquiry" id="textbookForm" data-kind="textbook" data-required="first_name last_name email campus course textbook_link" data-done="Thank you. Your request is in, and the Student Life Office will follow up." method="post" action="#textbookForm" novalidate hidden>
+      <div class="field-row">
+        <label class="field"><span>First name</span><input name="first_name" autocomplete="given-name" required maxlength="80"></label>
+        <label class="field"><span>Last name</span><input name="last_name" autocomplete="family-name" required maxlength="80"></label>
+      </div>
+      <div class="field-row">
+        <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+        <label class="field"><span>Campus</span>
+          <select name="campus" required>
+            <option value="visalia" selected>Visalia, CA</option>
+            <option value="midlothian">Midlothian, VA</option>
+            <option value="poland">Poland, OH</option>
+          </select>
+        </label>
+      </div>
+      <label class="field"><span>This textbook is for the course...</span><input name="course" required maxlength="200"></label>
+      <label class="field"><span>Link to the textbook you're requesting</span><input name="textbook_link" type="url" required maxlength="1000"></label>
+      <fieldset class="field age">
+        <legend>Your age</legend>
+        <label class="choice"><input type="radio" name="age_statement" value="adult" required> I'm 18 or older.</label>
+        <label class="choice"><input type="radio" name="age_statement" value="minor_with_parent"> I'm 13 to 17, and my parent or guardian knows I'm sending this.</label>
+        <label class="choice"><input type="radio" name="age_statement" value="under_13"> I'm under 13.</label>
+      </fieldset>
+      <label class="choice consent"><input type="checkbox" name="consent_contact" required> Catalyst Bible College may contact me by email or phone about this. I've read the <a href="../privacy.html">Privacy Notice</a>.</label>
+      <div class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit">Send my request</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="back"><a href="../index.html">Back to the home page</a></p>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-legal">
+      <span>© Catalyst Bible College. All rights reserved.</span>
+      <span><a href="../privacy.html">Privacy Notice</a> · <a href="../ca_disc/">CA Disclosures</a></span>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
