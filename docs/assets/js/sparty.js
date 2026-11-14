@@ -70,7 +70,7 @@
   titles.appendChild(h2);
   titles.appendChild(el("p", null, "Your guide to Catalyst"));
   head.appendChild(titles);
-  var closeBtn = el("button", "sparty-close", "×");
+  var closeBtn = el("button", "sparty-close", "\u00d7");
   closeBtn.type = "button";
   closeBtn.setAttribute("aria-label", "Close Ask Sparty");
   head.appendChild(closeBtn);
@@ -153,7 +153,8 @@
     if (links && links.length) {
       var box = el("div", "links");
       links.forEach(function (l) {
-        var a = el("a", null, LINK_NAMES[l] || l);
+        if (typeof l !== "string" || !Object.prototype.hasOwnProperty.call(LINK_NAMES, l)) return;
+        var a = el("a", null, LINK_NAMES[l]);
         a.href = siteHref(l);
         if (/^https?:/.test(l)) { a.target = "_blank"; a.rel = "noopener"; }
         box.appendChild(a);
