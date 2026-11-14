@@ -31,3 +31,31 @@ body { background: var(--parchment); }
 .links .pending { display: block; padding: 14px 18px; border: 1px dashed rgba(23,18,14,.25); border-radius: 10px; color: #6b5d48; }
 
 .inquiry[hidden] { display: none !important; }
+
+/* Inner pages sit on a light background, so the header stays dark at the top too. */
+.site-header--solid, .site-header--solid:not(.is-scrolled) { background: rgba(23, 18, 14, .94); box-shadow: 0 1px 0 rgba(232, 150, 63, .18); }
+
+/* Spacing between blocks of text */
+.policy > p, .policy > ul, .policy > ol, .policy > figure, .policy > .people, .policy > .letter, .policy > .cal-grid, .policy > form { margin-top: 16px; }
+.policy > h2 + p, .policy > h2 + ul, .policy > h2 + ol { margin-top: 8px; }
+.policy .lead { margin-top: 16px; line-height: 1.5; }
+.policy .eyebrow { display: block; margin-top: 8px; }
+.letter p + p { margin-top: 12px; }
+.steps li, .checks li { line-height: 1.55; }
+
+/* Signing Day banner, built from text so the date can change without new artwork */
+.sd-banner {
+  position: relative; overflow: hidden; border-radius: 14px; margin-bottom: 28px;
+  min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: 36px 20px; color: #fff;
+  background: linear-gradient(rgba(16,12,9,.62), rgba(16,12,9,.72)), url("../img/campus.jpg") center/cover no-repeat, #17120e;
+}
+.sd-kicker { font-family: var(--font-display); font-weight: 700; font-size: clamp(14px, 2.2vw, 22px); letter-spacing: .12em; text-transform: uppercase; }
+.sd-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(48px, 10vw, 104px); line-height: .95; letter-spacing: .02em; text-transform: uppercase; margin: 8px 0 12px; }
+.sd-title strong { font-weight: 800; color: var(--ember); }
+.sd-date { font-family: var(--font-mono); font-size: clamp(13px, 1.8vw, 16px); letter-spacing: .2em; text-transform: uppercase; color: #f5eee3; }
+@media (max-width: 640px) {
+  .policy .lead { font-size: 18px; }
+  .policy p, .policy li { font-size: 17px; }
+  .sd-banner { min-height: 200px; }
+}
