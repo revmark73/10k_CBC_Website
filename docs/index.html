@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.add("js")</script>
+  <link rel="stylesheet" href="assets/css/sparty.css">
 </head>
 <body>
 
@@ -72,6 +73,25 @@
       <p>Every graduate holds a <strong>Nelson University diploma</strong>. SACSCOC accredited. Federal financial aid eligible.</p>
     </div>
   </aside>
+
+  <!-- ================= ASK SPARTY ================= -->
+  <section class="section ask-sparty" id="ask-sparty" aria-labelledby="askSpartyTitle">
+    <div class="section-inner">
+      <div data-sparty-figure></div>
+      <div>
+        <span class="eyebrow">Meet Sparty</span>
+        <h2 class="h-section" id="askSpartyTitle">Got a question?<br>Ask Sparty.</h2>
+        <p class="lede">Sparty knows this website inside and out. Ask about cost, degrees, housing, campuses or how to apply, and he'll point you to the right page.</p>
+        <div class="ask-box">
+          <div class="sparty-chips"></div>
+          <form class="start" role="search" aria-label="Ask Sparty">
+            <input type="text" maxlength="500" placeholder="Type your question..." aria-label="Your question for Sparty" autocomplete="off">
+            <button type="submit">Ask Sparty</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ================= COST ================= -->
   <section class="section section--light" id="cost">
@@ -420,5 +440,6 @@
 
   <script src="assets/js/hero.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/sparty.js"></script>
 </body>
 </html>

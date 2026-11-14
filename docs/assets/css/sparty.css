@@ -1,0 +1,103 @@
+/* Ask Sparty (WO-42). The mascot, his motion, and the chat window. */
+.sparty-fig { position: relative; display: block; width: 100%; aspect-ratio: 480 / 670; }
+.sparty-fig img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; display: block;
+  animation: spartyBob 4.2s var(--ease) infinite; transform-origin: 50% 95%; filter: drop-shadow(0 18px 24px rgba(0,0,0,.45)); }
+/* the globe glow sits behind his globe */
+.sparty-fig .glow { position: absolute; z-index: 1; left: 73.7%; top: 37.3%; width: 52%; aspect-ratio: 1; translate: -50% -50%;
+  border-radius: 50%; background: radial-gradient(circle, rgba(255,196,107,.55) 0%, rgba(232,150,63,.25) 45%, rgba(232,150,63,0) 70%);
+  animation: spartyGlow 3.2s ease-in-out infinite; }
+/* a spark that circles the globe */
+.sparty-fig .orbit { position: absolute; z-index: 3; left: 73.7%; top: 37.3%; width: 46%; aspect-ratio: 1; translate: -50% -50%;
+  animation: spartyOrbit 6s linear infinite; pointer-events: none; }
+.sparty-fig .orbit::before { content: ""; position: absolute; top: -4px; left: 50%; width: 10px; height: 10px; border-radius: 50%;
+  background: #fff7e6; box-shadow: 0 0 10px 4px rgba(255,196,107,.9); }
+.sparty-fig .shadow { position: absolute; z-index: 0; left: 50%; bottom: -2%; width: 60%; height: 6%; translate: -50% 0;
+  border-radius: 50%; background: rgba(0,0,0,.35); filter: blur(6px); animation: spartyShadow 4.2s var(--ease) infinite; }
+.is-talking .sparty-fig img { animation: spartyTalk .5s ease-in-out infinite; }
+
+@keyframes spartyBob { 0%,100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-4%) rotate(1.5deg); } }
+@keyframes spartyShadow { 0%,100% { transform: scaleX(1); opacity: .9; } 50% { transform: scaleX(.82); opacity: .55; } }
+@keyframes spartyGlow { 0%,100% { opacity: .65; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes spartyOrbit { to { transform: rotate(360deg); } }
+@keyframes spartyTalk { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-3%) rotate(2deg); } }
+@keyframes spartyPop { 0% { transform: translateY(30px) scale(.6) rotate(-12deg); opacity: 0; } 70% { transform: translateY(-6px) scale(1.04) rotate(3deg); opacity: 1; } 100% { transform: none; } }
+
+/* ---------- floating launcher on every page ---------- */
+.sparty-launch { position: fixed; right: clamp(12px, 3vw, 28px); bottom: clamp(12px, 3vw, 28px); z-index: 80;
+  display: flex; align-items: flex-end; gap: 10px; border: 0; background: none; padding: 0; cursor: pointer;
+  animation: spartyPop .9s var(--ease) .6s both; }
+.sparty-launch .sparty-fig { width: clamp(78px, 9vw, 112px); }
+.sparty-launch .bubble { margin-bottom: 26%; background: var(--parchment); color: var(--ink); font-family: var(--font-display); font-weight: 700;
+  font-size: 15px; padding: 10px 14px; border-radius: 16px 16px 4px 16px; box-shadow: 0 10px 30px rgba(0,0,0,.35); border: 2px solid var(--ember);
+  white-space: nowrap; transition: transform .25s var(--ease); }
+.sparty-launch .bubble small { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #9A5414; }
+.sparty-launch:hover .bubble, .sparty-launch:focus-visible .bubble { transform: translateY(-4px); }
+.sparty-launch:focus-visible { outline: 3px solid var(--glow); outline-offset: 6px; border-radius: 16px; }
+.sparty-launch[aria-expanded="true"] { display: none; }
+.sparty-launch { transition: opacity .3s var(--ease), transform .3s var(--ease); }
+.sparty-launch.is-tucked { opacity: 0; transform: translateY(20px); pointer-events: none; }
+.sparty-chips[hidden] { display: none; }
+@media (max-width: 520px) {
+  .sparty-launch .bubble { display: none; }
+  .sparty-launch .sparty-fig { width: 62px; }
+  .sparty-launch::before { content: ""; position: absolute; inset: 8% -10% -6% -10%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(23,18,14,.92) 55%, rgba(23,18,14,0) 72%); }
+}
+
+/* ---------- chat window ---------- */
+.sparty-panel { position: fixed; right: clamp(8px, 3vw, 28px); bottom: clamp(8px, 3vw, 28px); z-index: 90;
+  width: min(420px, calc(100vw - 16px)); height: min(620px, calc(100vh - 16px)); display: none; flex-direction: column;
+  background: var(--ink-2); color: var(--parchment); border: 1px solid rgba(232,150,63,.45); border-radius: 18px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+.sparty-panel.is-open { display: flex; animation: spartyPop .45s var(--ease) both; }
+.sparty-head { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: linear-gradient(135deg, #2c2318, #17120e); border-bottom: 1px solid rgba(232,150,63,.3); }
+.sparty-head .sparty-fig { width: 46px; flex: none; }
+.sparty-head h2 { font-family: var(--font-display); font-size: 19px; color: #fff; line-height: 1.1; }
+.sparty-head p { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--glow); }
+.sparty-close { margin-left: auto; width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(245,238,227,.25); background: transparent; color: var(--parchment); font-size: 22px; cursor: pointer; }
+.sparty-close:hover, .sparty-close:focus-visible { background: rgba(245,238,227,.1); }
+.sparty-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+.sparty-msg { max-width: 88%; padding: 10px 14px; border-radius: 14px; font-size: 16px; line-height: 1.5; white-space: pre-wrap; }
+.sparty-msg.from-sparty { align-self: flex-start; background: var(--parchment); color: var(--ink); border-bottom-left-radius: 4px; }
+.sparty-msg.from-you { align-self: flex-end; background: var(--ember); color: var(--ink); border-bottom-right-radius: 4px; font-weight: 500; }
+.sparty-msg .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.sparty-msg .links a { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: #9A5414; border: 1px solid #e0b98a; background: #fff8ef; padding: 4px 9px; border-radius: 999px; text-decoration: none; }
+.sparty-msg .links a:hover { background: #fff; }
+.sparty-typing { align-self: flex-start; display: inline-flex; gap: 5px; padding: 12px 14px; background: var(--parchment); border-radius: 14px; }
+.sparty-typing i { width: 7px; height: 7px; border-radius: 50%; background: #9A5414; animation: spartyDot 1s infinite; }
+.sparty-typing i:nth-child(2) { animation-delay: .15s; } .sparty-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes spartyDot { 0%,80%,100% { opacity: .3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-4px); } }
+.sparty-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 10px; }
+.sparty-chips button { font: 500 13px/1.2 var(--font-body); color: var(--parchment); background: rgba(232,150,63,.12); border: 1px solid rgba(232,150,63,.5); border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+.sparty-chips button:hover, .sparty-chips button:focus-visible { background: rgba(232,150,63,.28); }
+.sparty-form { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(245,238,227,.12); background: #17120e; }
+.sparty-form input { flex: 1; min-width: 0; font: 16px var(--font-body); padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(245,238,227,.25); background: #221b15; color: #fff; }
+.sparty-form input:focus { outline: 2px solid var(--ember); border-color: var(--ember); }
+.sparty-form button { font: 700 14px var(--font-display); letter-spacing: .06em; text-transform: uppercase; padding: 0 16px; border-radius: 12px; border: 0; background: var(--ember); color: var(--ink); cursor: pointer; }
+.sparty-form button[disabled] { opacity: .55; cursor: wait; }
+.sparty-note { font-size: 12px; line-height: 1.45; color: var(--stone); padding: 0 14px 10px; background: #17120e; }
+.sparty-note a { color: var(--glow); }
+
+/* ---------- home page feature ---------- */
+.ask-sparty { background: radial-gradient(120% 90% at 20% 30%, #2c2318 0%, #17120e 60%); color: var(--parchment); overflow: hidden; }
+.ask-sparty .section-inner { display: grid; grid-template-columns: minmax(200px, 340px) 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+.ask-sparty .h-section { color: #fff; }
+.ask-sparty .lede { color: var(--parchment-2); }
+.ask-sparty .sparty-fig { max-width: 340px; margin: 0 auto; }
+.ask-box { margin-top: 24px; }
+.ask-box .sparty-chips { padding: 0; margin-bottom: 14px; }
+.ask-box .sparty-chips button { font-size: 15px; padding: 9px 14px; }
+.ask-box .start { display: flex; gap: 10px; max-width: 620px; }
+.ask-box .start input { flex: 1; min-width: 0; font: 18px var(--font-body); padding: 16px 18px; border-radius: 14px; border: 2px solid rgba(232,150,63,.55); background: #221b15; color: #fff; }
+.ask-box .start input:focus { outline: none; border-color: var(--glow); box-shadow: 0 0 0 4px rgba(255,196,107,.2); }
+.ask-box .start button { font: 800 16px var(--font-display); letter-spacing: .06em; text-transform: uppercase; padding: 0 24px; border-radius: 14px; border: 0; background: linear-gradient(135deg, var(--glow), var(--ember) 60%, var(--lava)); color: var(--ink); cursor: pointer; box-shadow: 0 10px 30px rgba(232,150,63,.35); }
+@media (max-width: 760px) {
+  .ask-sparty .section-inner { grid-template-columns: 1fr; text-align: center; }
+  .ask-sparty .sparty-fig { max-width: 220px; }
+  .ask-box .sparty-chips { justify-content: center; }
+  .ask-box .start { flex-direction: column; }
+  .ask-box .start button { padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sparty-fig img, .sparty-fig .glow, .sparty-fig .orbit, .sparty-fig .shadow, .sparty-launch, .sparty-panel.is-open { animation: none !important; }
+}
