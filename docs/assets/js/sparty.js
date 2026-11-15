@@ -72,6 +72,8 @@
     if (p.charAt(0) === "#") return (SITE_ROOT || "./") + p;
     return SITE_ROOT + p;
   }
+  // Sparty may also link to a page of the Nelson undergraduate catalog.
+  var CATALOG_PDF = "https://www.nelson.edu/wp-content/uploads/2026/06/UndergraduateCatalog_26-27.Final_.pdf";
   var LINK_NAMES = {
     "/": "Home", "/#cost": "What it costs", "/#programs": "Degrees", "/#world": "World Experience",
     "/#life": "Student life", "/#faq": "Questions", "/#contact": "Ask us", "/current/": "Current students",
@@ -185,8 +187,11 @@
     if (links && links.length) {
       var box = el("div", "links");
       links.forEach(function (l) {
-        if (typeof l !== "string" || !Object.prototype.hasOwnProperty.call(LINK_NAMES, l)) return;
-        var a = el("a", null, LINK_NAMES[l]);
+        if (typeof l !== "string") return;
+        var page = l.indexOf(CATALOG_PDF + "#page=") === 0 ? l.slice(CATALOG_PDF.length + 6) : "";
+        var known = Object.prototype.hasOwnProperty.call(LINK_NAMES, l);
+        if (!known && !/^\d{1,3}$/.test(page)) return;
+        var a = el("a", null, known ? LINK_NAMES[l] : "Nelson catalog, p. " + page);
         a.href = siteHref(l);
         if (/^https?:/.test(l)) { a.target = "_blank"; a.rel = "noopener"; }
         box.appendChild(a);
