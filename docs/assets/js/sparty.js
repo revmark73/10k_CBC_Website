@@ -31,7 +31,7 @@
      6. If the film can't start within a few seconds, the chat opens.
      7. The file is not downloaded until that first click. */
   var FILM = {
-    src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4?v=4",
+    src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4?v=5",
     captions: [
       [0.3, 4.0, "Behold! From the fires of the forge..."],
       [4.0, 6.8, "I'm SPARTY!"],
