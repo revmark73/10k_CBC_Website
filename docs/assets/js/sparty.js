@@ -31,10 +31,11 @@
      6. If the film can't start within a few seconds, the chat opens.
      7. The file is not downloaded until that first click. */
   var FILM = {
-    src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4",
+    src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4?v=2",
     captions: [
-      [0.3, 4.0, "Behold! From the fires of the forge...\nI am SPARTY!"],
-      [4.0, 9.0, "At Catalyst Bible College, everyone\nmajors in changing the world!"],
+      [0.3, 3.9, "Behold! From the fires of the forge..."],
+      [3.9, 4.9, "I'm SPARTY!"],
+      [4.9, 9.0, "At Catalyst Bible College, everyone\nmajors in changing the world!"],
       [9.0, 12.0, "A real degree. No mountain of debt."],
       [12.0, 14.9, "Got a question? Bring it on!"]
     ],
