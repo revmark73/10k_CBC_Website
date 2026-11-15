@@ -59,3 +59,11 @@ body { background: var(--parchment); }
   .policy p, .policy li { font-size: 17px; }
   .sd-banner { min-height: 200px; }
 }
+
+/* president's signature with his headshot in the bottom right corner of the letter */
+.letter { padding-bottom: 18px; }
+.letter-sign { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-top: 12px; }
+.letter-sign p { margin: 0; }
+.letter-sign img { flex: none; width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: 50% 20%;
+  border: 3px solid #fff; box-shadow: 0 0 0 2px var(--ember), 0 8px 20px rgba(23,18,14,.18); }
+@media (max-width: 520px) { .letter-sign img { width: 84px; height: 84px; } }
