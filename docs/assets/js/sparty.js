@@ -22,8 +22,9 @@
      After that, every click goes straight to the chat with the still,
      gently animated Sparty.
      1. It only starts from a click, so sound is allowed and expected.
-     2. Once per visitor. A visitor who has seen it, or skipped it,
-        never gets it again on this device for a year.
+     2. Once per page load. Reloading the page, or opening another
+        page, brings it back for the next first click. Nothing is
+        saved on the visitor's computer.
      3. A Skip button and Escape always end it right away.
      4. Captions show the whole time.
      5. Visitors who ask for reduced motion or who save data skip it.
@@ -38,8 +39,6 @@
       [12.0, 14.9, "Got a question? Bring it on!"]
     ],
     poster: IMG + "sparty-intro-poster.jpg",
-    seenKey: "cbc-sparty-film-seen",
-    quietDays: 365
   };
   var filmSeenThisPage = false;
 
@@ -254,17 +253,8 @@
   form.addEventListener("submit", function (e) { e.preventDefault(); ask(input.value); });
 
   /* ---------- the welcome film (first click only) ---------- */
-  function seenFilm() {
-    if (filmSeenThisPage) return true;
-    try {
-      var t = Number(localStorage.getItem(FILM.seenKey) || 0);
-      return !!t && (Date.now() - t) < FILM.quietDays * 864e5;
-    } catch (e) { return false; }
-  }
-  function markSeen() {
-    filmSeenThisPage = true;
-    try { localStorage.setItem(FILM.seenKey, String(Date.now())); } catch (e) {}
-  }
+  function seenFilm() { return filmSeenThisPage; }
+  function markSeen() { filmSeenThisPage = true; }
   function shouldShowFilm() {
     if (seenFilm()) return false;
     if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
