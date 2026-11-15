@@ -102,39 +102,25 @@
   .sparty-fig img, .sparty-fig .glow, .sparty-fig .orbit, .sparty-fig .shadow, .sparty-launch, .sparty-panel.is-open { animation: none !important; }
 }
 
-/* ---------- Sparty's welcome film (home page only) ---------- */
-.ask-sparty.has-film .section-inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-.sparty-film { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 18px; overflow: hidden;
-  background: var(--ink); border: 1px solid rgba(232,150,63,.45);
-  box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 6px rgba(232,150,63,.06); }
-.sparty-film-poster, .sparty-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.sparty-film video { opacity: 0; transition: opacity .35s var(--ease); }
-.sparty-film[data-state="playing"] video, .sparty-film[data-state="muted"] video { opacity: 1; }
+/* ---------- Sparty's welcome film (first click only) ---------- */
+.sparty-film-overlay { position: fixed; inset: 0; z-index: 120; display: none; place-items: center; padding: 16px;
+  background: rgba(10,8,6,.82); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.sparty-film-overlay.is-open { display: grid; animation: spartyFade .3s var(--ease) both; }
+@keyframes spartyFade { from { opacity: 0; } to { opacity: 1; } }
+.sparty-film { position: relative; width: min(960px, 100%); aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden;
+  background: var(--ink); border: 1px solid rgba(232,150,63,.5);
+  box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 80px rgba(232,150,63,.18);
+  animation: spartyPop .45s var(--ease) both; }
+.sparty-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .sparty-film video::cue { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: #fff; background: rgba(23,18,14,.78); }
-
-.sparty-film-play { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 6px;
-  border: 0; cursor: pointer; color: var(--ink); background: linear-gradient(180deg, rgba(23,18,14,0) 35%, rgba(23,18,14,.6)); }
-.sparty-film-play svg { width: 18px; height: 18px; fill: currentColor; }
-.sparty-film-play span { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px;
-  font: 800 16px var(--font-display); letter-spacing: .06em; text-transform: uppercase;
-  background: linear-gradient(135deg, var(--glow), var(--ember) 60%, var(--lava)); box-shadow: 0 10px 30px rgba(232,150,63,.45);
-  transition: transform .25s var(--ease); }
-.sparty-film-play b { font-weight: inherit; }
-.sparty-film-play small { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--parchment); }
-.sparty-film-play:hover span, .sparty-film-play:focus-visible span { transform: translateY(-3px); }
-.sparty-film-play:focus-visible { outline: 3px solid var(--glow); outline-offset: -6px; }
-
-.sparty-film-chip { position: absolute; top: 12px; display: none; font: 500 12px var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
-  padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(245,238,227,.35); background: rgba(23,18,14,.72); color: var(--parchment); cursor: pointer; }
-.sparty-film-chip:hover, .sparty-film-chip:focus-visible { background: rgba(23,18,14,.92); border-color: var(--glow); }
+.sparty-film-chip { position: absolute; top: 12px; font: 500 13px var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
+  padding: 10px 14px; border-radius: 999px; border: 1px solid rgba(245,238,227,.4); background: rgba(23,18,14,.75); color: var(--parchment); cursor: pointer; }
+.sparty-film-chip:hover, .sparty-film-chip:focus-visible { background: rgba(23,18,14,.95); border-color: var(--glow); outline: none; }
 .sparty-film-sound { left: 12px; color: var(--glow); }
 .sparty-film-skip { right: 12px; }
-.sparty-film[data-state="muted"] .sparty-film-sound { display: inline-block; }
-.sparty-film[data-state="muted"] .sparty-film-skip, .sparty-film[data-state="playing"] .sparty-film-skip { display: inline-block; }
-.sparty-film[data-state="muted"] .sparty-film-play, .sparty-film[data-state="playing"] .sparty-film-play { display: none; }
-
-@media (max-width: 760px) {
-  .ask-sparty.has-film .section-inner { grid-template-columns: 1fr; }
-  .ask-sparty .sparty-film { max-width: 560px; margin: 0 auto; width: 100%; }
+@media (prefers-reduced-motion: reduce) { .sparty-film-overlay.is-open, .sparty-film { animation: none; } }
+@media (max-width: 520px) {
+  .sparty-film-chip { top: 8px; font-size: 11px; padding: 7px 10px; }
+  .sparty-film-sound { left: 8px; } .sparty-film-skip { right: 8px; }
+  .sparty-film video::cue { font-size: .72rem; }
 }
-@media (prefers-reduced-motion: reduce) { .sparty-film video, .sparty-film-play span { transition: none; } }

@@ -16,24 +16,19 @@
   ];
   var history = [];
   var busy = false;
-  var pauseFilm = function () {}; // set by the home page film below
-
   /* ---------- Sparty's welcome film: the house rules ----------
-     The film should land once, then stay out of the way.
-     1. Sound never starts by itself. Only a tap turns sound on.
-     2. It plays on its own at most once per visitor every 30 days,
-        muted with captions, and only when the Ask Sparty section is
-        mostly on screen. Every other time it waits for a tap.
-     3. Home page only. Never on other pages, never as a popup, never
-        inside the floating Ask Sparty button.
-     4. It never loops. When it ends it goes back to the still picture.
-     5. It pauses the moment it scrolls out of view, the tab is hidden,
-        or the Ask Sparty chat opens. It does not resume on its own.
-     6. No autoplay for visitors who ask for reduced motion or who are
-        saving data on a slow connection.
-     7. The video file is not downloaded until the section is close,
-        so it never slows down the top of the page.
-     8. A Skip button is always visible while it plays. */
+     The film plays once, on a visitor's first click of anything Ask
+     Sparty (the corner button, a question button, or the Ask button).
+     After that, every click goes straight to the chat with the still,
+     gently animated Sparty.
+     1. It only starts from a click, so sound is allowed and expected.
+     2. Once per visitor. A visitor who has seen it, or skipped it,
+        never gets it again on this device for a year.
+     3. A Skip button and Escape always end it right away.
+     4. Captions show the whole time.
+     5. Visitors who ask for reduced motion or who save data skip it.
+     6. If the film can't start within a few seconds, the chat opens.
+     7. The file is not downloaded until that first click. */
   var FILM = {
     src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4",
     captions: [
@@ -44,9 +39,9 @@
     ],
     poster: IMG + "sparty-intro-poster.jpg",
     seenKey: "cbc-sparty-film-seen",
-    quietDays: 30,
-    inView: 0.6
+    quietDays: 365
   };
+  var filmSeenThisPage = false;
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -157,15 +152,21 @@
   document.body.appendChild(panel);
 
   var greeted = false;
+  var GREETING = "Hey, I'm Sparty! Ask me anything about Catalyst Bible College: cost, degrees, housing, campuses, or how to apply.";
   var lastFocus = null;
   function openPanel() {
-    pauseFilm();
+    if (panel.classList.contains("is-open")) return;
+    if (filmIsShowing()) return;
     lastFocus = document.activeElement;
+    if (shouldShowFilm()) { showFilm(revealPanel); return; }
+    revealPanel();
+  }
+  function revealPanel() {
     panel.classList.add("is-open");
     launch.setAttribute("aria-expanded", "true");
     if (!greeted) {
       greeted = true;
-      addMsg("sparty", "Hey, I'm Sparty! Ask me anything about Catalyst Bible College: cost, degrees, housing, campuses, or how to apply.");
+      addMsg("sparty", GREETING);
     }
     setTimeout(function () { input.focus(); }, 50);
   }
@@ -208,6 +209,7 @@
     q = String(q || "").trim();
     if (!q || busy) return;
     if (!panel.classList.contains("is-open")) openPanel();
+    if (!greeted) { greeted = true; addMsg("sparty", GREETING); }
     chips.hidden = true;
     addMsg("you", q);
     input.value = "";
@@ -251,138 +253,109 @@
   }
   form.addEventListener("submit", function (e) { e.preventDefault(); ask(input.value); });
 
-  /* ---------- the welcome film ---------- */
-  function seenRecently() {
+  /* ---------- the welcome film (first click only) ---------- */
+  function seenFilm() {
+    if (filmSeenThisPage) return true;
     try {
       var t = Number(localStorage.getItem(FILM.seenKey) || 0);
-      return t && (Date.now() - t) < FILM.quietDays * 864e5;
+      return !!t && (Date.now() - t) < FILM.quietDays * 864e5;
     } catch (e) { return false; }
   }
   function markSeen() {
+    filmSeenThisPage = true;
     try { localStorage.setItem(FILM.seenKey, String(Date.now())); } catch (e) {}
   }
-  function mayAutoplay() {
-    if (seenRecently()) return false;
+  function shouldShowFilm() {
+    if (seenFilm()) return false;
     if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
     var c = navigator.connection;
     if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ""))) return false;
-    return true;
+    var t = document.createElement("video");
+    return !!(t.canPlayType && t.canPlayType("video/mp4"));
   }
 
-  function buildFilm(slot, feature) {
-    feature.classList.add("has-film");
+  var filmBox = null;
+  function filmIsShowing() { return !!(filmBox && filmBox.classList.contains("is-open")); }
+
+  function showFilm(done) {
+    markSeen();
+    var wrap = el("div", "sparty-film-overlay");
+    wrap.setAttribute("role", "dialog");
+    wrap.setAttribute("aria-modal", "true");
+    wrap.setAttribute("aria-label", "Meet Sparty, a 15 second welcome");
     var box = el("div", "sparty-film");
-    var poster = document.createElement("img");
-    poster.className = "sparty-film-poster";
-    poster.src = FILM.poster;
-    poster.alt = "Sparty, the Catalyst mascot, holding a glowing globe";
     var video = document.createElement("video");
-    video.muted = true;
     video.playsInline = true;
     video.setAttribute("playsinline", "");
-    video.preload = "none";
+    video.preload = "auto";
     video.poster = FILM.poster;
-    video.setAttribute("aria-label", "Sparty's 15 second welcome");
     var cc = null;
     try {
       cc = video.addTextTrack("captions", "English", "en");
       FILM.captions.forEach(function (c) { cc.addCue(new VTTCue(c[0], c[1], c[2])); });
-      cc.mode = "hidden";
+      cc.mode = "showing";
     } catch (e) { cc = null; }
-
-    var playBtn = el("button", "sparty-film-play");
-    playBtn.type = "button";
-    playBtn.innerHTML = '<span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13l11-6.5z"/></svg><b>Watch Sparty</b></span><small>15 sec · sound on</small>';
-    var soundBtn = el("button", "sparty-film-chip sparty-film-sound", "Tap for sound");
-    soundBtn.type = "button";
     var skipBtn = el("button", "sparty-film-chip sparty-film-skip", "Skip");
     skipBtn.type = "button";
-    skipBtn.setAttribute("aria-label", "Skip Sparty's welcome");
-
-    box.appendChild(poster);
+    skipBtn.setAttribute("aria-label", "Skip Sparty's welcome and open the chat");
+    var muteBtn = el("button", "sparty-film-chip sparty-film-sound", "Sound off");
+    muteBtn.type = "button";
     box.appendChild(video);
-    box.appendChild(playBtn);
-    box.appendChild(soundBtn);
+    box.appendChild(muteBtn);
     box.appendChild(skipBtn);
-    slot.appendChild(box);
+    wrap.appendChild(box);
+    document.body.appendChild(wrap);
+    filmBox = wrap;
 
-    var loaded = false;
-    function load() { if (!loaded) { loaded = true; video.src = FILM.src; } }
-    function setCaptions(on) {
-      if (cc) cc.mode = on ? "showing" : "hidden";
+    var finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      clearTimeout(stall);
+      document.removeEventListener("keydown", onKey, true);
+      try { video.pause(); } catch (e) {}
+      video.removeAttribute("src");
+      try { video.load(); } catch (e) {}
+      wrap.classList.remove("is-open");
+      wrap.remove();
+      filmBox = null;
+      done();
     }
-    function setState(s) { box.setAttribute("data-state", s); }
-    setState("idle");
+    function onKey(e) { if (e.key === "Escape") { e.stopPropagation(); finish(); } }
+    document.addEventListener("keydown", onKey, true);
+    skipBtn.addEventListener("click", finish);
+    muteBtn.addEventListener("click", function () {
+      video.muted = !video.muted;
+      muteBtn.textContent = video.muted ? "Sound on" : "Sound off";
+    });
+    wrap.addEventListener("click", function (e) { if (e.target === wrap) finish(); });
+    video.addEventListener("ended", finish);
+    video.addEventListener("error", finish);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) finish(); });
 
-    function rest() {
-      video.pause();
-      setState("idle");
-      playBtn.querySelector("b").textContent = "Watch again";
-    }
-    function playWithSound() {
-      load();
-      markSeen();
-      var fromPreview = video.muted;
-      video.muted = false;
-      video.volume = 0.85;
-      setCaptions(false);
-      if (video.ended || fromPreview) video.currentTime = 0;
-      setState("playing");
-      var p = video.play();
-      if (p && p.catch) p.catch(function () { setState("idle"); });
-    }
-    function playMuted() {
-      load();
-      markSeen();
+    // If it hasn't started within six seconds, go straight to the chat.
+    var stall = setTimeout(function () { if (video.paused || video.currentTime < 0.1) finish(); }, 6000);
+    video.addEventListener("playing", function () { clearTimeout(stall); });
+
+    wrap.classList.add("is-open");
+    video.src = FILM.src;
+    video.volume = 0.85;
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {
+      // Some browsers refuse sound; try once more without it.
       video.muted = true;
-      setCaptions(true);
-      setState("muted");
-      var p = video.play();
-      if (p && p.catch) p.catch(function () { setState("idle"); });
-    }
-    pauseFilm = function () {
-      if (!video.paused) { video.pause(); setState("idle"); playBtn.querySelector("b").textContent = "Keep watching"; }
-    };
-
-    playBtn.addEventListener("click", playWithSound);
-    soundBtn.addEventListener("click", playWithSound);
-    skipBtn.addEventListener("click", function () { markSeen(); rest(); playBtn.querySelector("b").textContent = "Watch Sparty"; });
-    video.addEventListener("ended", rest);
-    document.addEventListener("visibilitychange", function () { if (document.hidden) pauseFilm(); });
-
-    if ("IntersectionObserver" in window) {
-      // Start fetching a little before the section arrives.
-      new IntersectionObserver(function (es, obs) {
-        if (es[0].isIntersecting) { obs.disconnect(); video.preload = "metadata"; }
-      }, { rootMargin: "300px 0px" }).observe(box);
-
-      var autoplayUsed = !mayAutoplay();
-      new IntersectionObserver(function (es) {
-        var e = es[0];
-        if (e.intersectionRatio >= FILM.inView) {
-          if (!autoplayUsed && !panel.classList.contains("is-open") && !document.hidden) {
-            autoplayUsed = true;
-            playMuted();
-          }
-        } else if (!video.paused) {
-          pauseFilm();
-        }
-      }, { threshold: [0, FILM.inView] }).observe(box);
-    }
+      muteBtn.textContent = "Sound on";
+      var q = video.play();
+      if (q && q.catch) q.catch(finish);
+    });
+    skipBtn.focus();
   }
 
   /* ---------- home page feature ---------- */
   var feature = document.getElementById("ask-sparty");
   if (feature) {
     var slot = feature.querySelector("[data-sparty-figure]");
-    if (slot) {
-      var vtest = document.createElement("video");
-      if (vtest.canPlayType && vtest.canPlayType("video/mp4")) {
-        buildFilm(slot, feature);
-      } else {
-        slot.appendChild(figure(480));
-      }
-    }
+    if (slot) slot.appendChild(figure(480));
     var fChips = feature.querySelector(".sparty-chips");
     if (fChips) makeChips(fChips, function (q) { ask(q); });
     if ("IntersectionObserver" in window) {
