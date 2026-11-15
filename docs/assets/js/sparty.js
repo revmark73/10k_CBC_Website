@@ -193,10 +193,14 @@
     if (then) then();
   }
   // Catalog mode: Sparty invites catalog questions and offers catalog starters.
+  var catalogMode = false;
   function openCatalog() {
+    if (filmIsShowing()) return;
     greeted = true;
     openPanel(function () {
-      addMsg("sparty", CATALOG_GREETING);
+      var last = log.lastElementChild;
+      if (!catalogMode || !last || last.textContent !== CATALOG_GREETING) addMsg("sparty", CATALOG_GREETING);
+      catalogMode = true;
       makeChips(chips, function (q) { ask(q); }, CATALOG_SUGGESTED);
       chips.hidden = false;
       input.placeholder = "Ask about the Nelson catalog...";
@@ -217,6 +221,12 @@
     setTimeout(function () { input.focus(); }, 50);
   }
   function closePanel() {
+    if (catalogMode) {
+      // back to everyday questions next time the chat opens
+      catalogMode = false;
+      input.placeholder = "Ask about Catalyst...";
+      panelChips();
+    }
     panel.classList.remove("is-open");
     launch.setAttribute("aria-expanded", "false");
     (lastFocus && lastFocus.focus ? lastFocus : launch).focus();
