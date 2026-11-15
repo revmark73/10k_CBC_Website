@@ -333,7 +333,7 @@
     var wrap = el("div", "sparty-film-overlay");
     wrap.setAttribute("role", "dialog");
     wrap.setAttribute("aria-modal", "true");
-    wrap.setAttribute("aria-label", "Meet Sparty, a 15 second welcome");
+    wrap.setAttribute("aria-label", "Meet Sparty, a 17 second welcome");
     var box = el("div", "sparty-film");
     var video = document.createElement("video");
     video.playsInline = true;
