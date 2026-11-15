@@ -124,7 +124,7 @@
   panel.appendChild(form);
 
   var note = el("p", "sparty-note");
-  note.innerHTML = "Sparty answers from this website and can get things wrong. For anything important, call <a href=\"tel:+15597339070\">559-733-9070</a>. Please don't share personal details here.";
+  note.innerHTML = "Sparty answers from this website and the Nelson University catalog, and he can get things wrong. For anything important, call <a href=\"tel:+15597339070\">559-733-9070</a>. Please don't share personal details here.";
   panel.appendChild(note);
 
   function makeChips(box, onPick) {
