@@ -72,8 +72,28 @@
     if (p.charAt(0) === "#") return (SITE_ROOT || "./") + p;
     return SITE_ROOT + p;
   }
-  // Sparty may also link to a page of the Nelson undergraduate catalog.
-  var CATALOG_PDF = "https://www.nelson.edu/wp-content/uploads/2026/06/UndergraduateCatalog_26-27.Final_.pdf";
+  // Sparty may also link to a page of either Nelson catalog.
+  var CATALOG_PDFS = {
+    "https://www.nelson.edu/wp-content/uploads/2026/06/UndergraduateCatalog_26-27.Final_.pdf": "Undergrad catalog",
+    "https://www.nelson.edu/wp-content/uploads/2026/07/GraduateCatalog_26-27.pdf": "Graduate catalog"
+  };
+  function catalogLabel(l) {
+    for (var url in CATALOG_PDFS) {
+      if (l.indexOf(url + "#page=") === 0) {
+        var page = l.slice(url.length + 6);
+        if (/^\d{1,3}$/.test(page)) return CATALOG_PDFS[url] + ", p. " + page;
+      }
+    }
+    return "";
+  }
+  var CATALOG_SUGGESTED = [
+    "When does the fall semester begin?",
+    "What do I need to graduate with honors?",
+    "How do I drop a class?",
+    "How does transfer credit work?",
+    "What are the MBA admission requirements?"
+  ];
+  var CATALOG_GREETING = "Ask me anything from the Nelson University catalogs: degree requirements, courses and prerequisites, the academic calendar, grading, transfer credit or graduate programs. I'll tell you which page it's on.";
   var LINK_NAMES = {
     "/": "Home", "/#cost": "What it costs", "/#programs": "Degrees", "/#world": "World Experience",
     "/#life": "Student life", "/#faq": "Questions", "/#contact": "Ask us", "/current/": "Current students",
@@ -124,18 +144,26 @@
   panel.appendChild(form);
 
   var note = el("p", "sparty-note");
-  note.innerHTML = "Sparty answers from this website and the Nelson University catalog, and he can get things wrong. For anything important, call <a href=\"tel:+15597339070\">559-733-9070</a>. Please don't share personal details here.";
+  note.innerHTML = "Sparty answers from this website and the Nelson University catalogs, and he can get things wrong. For anything important, call <a href=\"tel:+15597339070\">559-733-9070</a>. Please don't share personal details here.";
   panel.appendChild(note);
 
-  function makeChips(box, onPick) {
-    SUGGESTED.forEach(function (q) {
+  function makeChips(box, onPick, list) {
+    box.textContent = "";
+    (list || SUGGESTED).forEach(function (q) {
       var b = el("button", null, q);
       b.type = "button";
       b.addEventListener("click", function () { onPick(q); });
       box.appendChild(b);
     });
   }
-  makeChips(chips, function (q) { ask(q); });
+  function panelChips() {
+    makeChips(chips, function (q) { ask(q); });
+    var c = el("button", "chip-catalog", "Ask about the Nelson catalog");
+    c.type = "button";
+    c.addEventListener("click", function () { openCatalog(); });
+    chips.appendChild(c);
+  }
+  panelChips();
 
   /* ---------- launcher ---------- */
   var launch = el("button", "sparty-launch");
@@ -155,13 +183,30 @@
   var greeted = false;
   var GREETING = "Hey, I'm Sparty! Ask me anything about Catalyst Bible College: cost, degrees, housing, campuses, or how to apply.";
   var lastFocus = null;
-  function openPanel() {
-    if (panel.classList.contains("is-open")) return;
+  function openPanel(after) {
+    var then = typeof after === "function" ? after : null;
+    if (panel.classList.contains("is-open")) { if (then) then(); return; }
     if (filmIsShowing()) return;
     lastFocus = document.activeElement;
-    if (shouldShowFilm()) { showFilm(revealPanel); return; }
+    if (shouldShowFilm()) { showFilm(function () { revealPanel(); if (then) then(); }); return; }
     revealPanel();
+    if (then) then();
   }
+  // Catalog mode: Sparty invites catalog questions and offers catalog starters.
+  function openCatalog() {
+    greeted = true;
+    openPanel(function () {
+      addMsg("sparty", CATALOG_GREETING);
+      makeChips(chips, function (q) { ask(q); }, CATALOG_SUGGESTED);
+      chips.hidden = false;
+      input.placeholder = "Ask about the Nelson catalog...";
+      setTimeout(function () { input.focus(); }, 50);
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-ask-catalog]") : null;
+    if (t) { e.preventDefault(); openCatalog(); }
+  });
   function revealPanel() {
     panel.classList.add("is-open");
     launch.setAttribute("aria-expanded", "true");
@@ -176,7 +221,7 @@
     launch.setAttribute("aria-expanded", "false");
     (lastFocus && lastFocus.focus ? lastFocus : launch).focus();
   }
-  launch.addEventListener("click", openPanel);
+  launch.addEventListener("click", function () { openPanel(); });
   closeBtn.addEventListener("click", closePanel);
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && panel.classList.contains("is-open")) closePanel();
@@ -188,10 +233,10 @@
       var box = el("div", "links");
       links.forEach(function (l) {
         if (typeof l !== "string") return;
-        var page = l.indexOf(CATALOG_PDF + "#page=") === 0 ? l.slice(CATALOG_PDF.length + 6) : "";
         var known = Object.prototype.hasOwnProperty.call(LINK_NAMES, l);
-        if (!known && !/^\d{1,3}$/.test(page)) return;
-        var a = el("a", null, known ? LINK_NAMES[l] : "Nelson catalog, p. " + page);
+        var cat = known ? "" : catalogLabel(l);
+        if (!known && !cat) return;
+        var a = el("a", null, known ? LINK_NAMES[l] : cat);
         a.href = siteHref(l);
         if (/^https?:/.test(l)) { a.target = "_blank"; a.rel = "noopener"; }
         box.appendChild(a);
@@ -365,6 +410,7 @@
       var v = f.value;
       f.value = "";
       if (v.trim()) ask(v); else openPanel();
+      return;
     });
   }
 })();

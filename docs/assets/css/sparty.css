@@ -124,3 +124,23 @@
   .sparty-film-sound { left: 8px; } .sparty-film-skip { right: 8px; }
   .sparty-film video::cue { font-size: .72rem; }
 }
+
+/* ---------- Ask about the Nelson catalog (WO-43) ---------- */
+.sparty-catalog-btn { display: inline-flex; align-items: center; gap: 12px; margin: 0 0 14px; padding: 12px 18px 12px 14px;
+  border-radius: 14px; border: 2px solid var(--ember); background: rgba(232,150,63,.1); color: var(--parchment);
+  cursor: pointer; text-align: left; transition: background .2s var(--ease), transform .2s var(--ease); }
+.sparty-catalog-btn svg { width: 26px; height: 26px; flex: none; color: var(--glow); }
+.sparty-catalog-btn b { display: block; font: 700 16px var(--font-display); letter-spacing: .01em; }
+.sparty-catalog-btn small { display: block; font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--glow); margin-top: 2px; }
+.sparty-catalog-btn:hover, .sparty-catalog-btn:focus-visible { background: rgba(232,150,63,.22); transform: translateY(-2px); outline: none; }
+.sparty-catalog-btn:focus-visible { box-shadow: 0 0 0 3px rgba(255,196,107,.5); }
+.sparty-chips .chip-catalog { border-color: var(--glow); color: var(--glow); font-weight: 600; }
+.catalog-callout { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  margin: 28px 0 8px; padding: 20px 22px; border-radius: 14px; background: var(--ink); color: var(--parchment); }
+.catalog-callout h2 { color: #fff; margin: 0 !important; }
+.catalog-callout p { margin: 6px 0 0 !important; color: var(--parchment-2, #e8dccb); }
+.catalog-callout .sparty-catalog-btn { margin: 0; }
+@media (max-width: 760px) {
+  .ask-box .sparty-catalog-btn { display: flex; width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .sparty-catalog-btn { transition: none; } }
