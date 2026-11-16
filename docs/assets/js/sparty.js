@@ -31,13 +31,13 @@
      6. If the film can't start within a few seconds, the chat opens.
      7. The file is not downloaded until that first click. */
   var FILM = {
-    src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4?v=6",
+    src: IMG.replace(/img\/$/, "video/") + "sparty-intro.mp4?v=7",
     captions: [
       [0.3, 4.0, "Behold! From the fires of the forge..."],
       [4.0, 6.8, "I'm SPARTY!"],
       [6.8, 10.9, "At Catalyst Bible College, everyone\nmajors in changing the world!"],
       [10.9, 13.9, "A real degree. No mountain of debt."],
-      [13.9, 17.4, "Got a question? Bring it on!"]
+      [13.9, 17.6, "Got a question? Bring it on!"]
     ],
     poster: IMG + "sparty-intro-poster.jpg",
   };
@@ -333,7 +333,7 @@
     var wrap = el("div", "sparty-film-overlay");
     wrap.setAttribute("role", "dialog");
     wrap.setAttribute("aria-modal", "true");
-    wrap.setAttribute("aria-label", "Meet Sparty, a 17 second welcome");
+    wrap.setAttribute("aria-label", "Meet Sparty, a 20 second welcome");
     var box = el("div", "sparty-film");
     var video = document.createElement("video");
     video.playsInline = true;
